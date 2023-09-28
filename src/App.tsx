@@ -11,7 +11,6 @@ function App() {
         <p>
           
           <Tominnappi />
-          8==D
           
           <br />
           <img style={{width: '500px', height: '500px', padding: "50px"}} src="https://www.sttinfo.fi/data/images/00167/3bf032f4-5128-4142-a3a6-336c5c2861ed.jpg"/>
