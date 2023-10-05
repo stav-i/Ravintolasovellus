@@ -3,14 +3,14 @@ import ServerData from './serverData';
 import { FC } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Layout from './pages/Layout';
-import Etusivu from './pages/Etusivu';
-import Sivu1 from './pages/Sivu1';
+import Layout from './customer_ui/Layout';
+import Etusivu from './customer_ui/Etusivu';
+import Sivu1 from './customer_ui/Sivu1';
 import { CssBaseline } from '@mui/material';
-import Sivu2 from './pages/Sivu2';
-import Sivu3 from './pages/Sivu3';
-import Cart from './pages/Cart';
-import Profile from './pages/Profile';
+import Sivu2 from './customer_ui/Sivu2';
+import Sivu3 from './customer_ui/Sivu3';
+import Cart from './customer_ui/Cart';
+import Profile from './customer_ui/Profile';
 
 const theme = createTheme({
   palette: {
