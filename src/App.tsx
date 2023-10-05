@@ -1,3 +1,5 @@
+
+import ServerData from './serverData';
 import { FC } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -31,6 +33,7 @@ const theme = createTheme({
 
 const App = () => {
   return (
+
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <BrowserRouter>
@@ -45,6 +48,7 @@ const App = () => {
           </Route>
         </Routes>
       </BrowserRouter>
+      <ServerData />
     </ThemeProvider>
 
   );
