@@ -42,6 +42,8 @@ const Frontpage: FC = () => {
            <Box sx={{ marginTop: "10px" }}>
              <Stack alignItems={"center"} bgcolor={"white"}>
              
+        
+             
              </Stack>
           
              <Stack textAlign={"center"}>
@@ -52,8 +54,10 @@ const Frontpage: FC = () => {
              </Stack>
  
              <Stack fontFamily={"Roboto"} style={{border: "5px solid black", marginTop: "2px" , backgroundColor: "white", marginBottom: "2px", width: "1140px", height: "700px", fontSize: "40px"}}>
+              
                
                <Stack alignItems={"center"}>   
+               <img style={{borderRadius: '50%', marginBottom:"10px", marginTop:"30px", width: '1000px', height: '240px'}} src="https://media.tenor.com/-VG9cLwSYTcAAAAC/dancing-triangle-dancing.gif"  className="App-logo" alt="logo"  />
  
                
  
