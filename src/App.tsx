@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Tominnappi from './testi';
+import ServerData from './serverData';
 
 function App() {
   return (
@@ -9,7 +10,8 @@ function App() {
       <header className="App-header">
         <img style={{borderRadius: '50%', marginBottom:"10px", marginTop:"80px", width: '300px', height: '300px'}} src="https://media.tenor.com/-VG9cLwSYTcAAAAC/dancing-triangle-dancing.gif"  className="App-logo" alt="logo"  />
         <p>
-          
+        <ServerData />
+
           <Tominnappi />
           
           <br />
