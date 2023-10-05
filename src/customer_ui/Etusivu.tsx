@@ -32,7 +32,7 @@ const Frontpage: FC = () => {
            paddingRight: 1.5,
            paddingLeft: 1.5,
            marginTop: "2px",
-           border: "3px solid blue",
+           border: "3px solid black",
            width: "1200px"
          }}
          
@@ -46,12 +46,12 @@ const Frontpage: FC = () => {
           
              <Stack textAlign={"center"}>
              
-               <Typography variant="h3" style={{ fontFamily: "Roboto", color: "black", fontSize: "50px", textDecoration: "underline", border:"5px solid blue",  height: "100px", backgroundColor: "white"}}>Etusivu</Typography>
+               <Typography variant="h3" style={{ fontFamily: "Roboto", color: "black", fontSize: "50px", textDecoration: "underline", border:"5px solid black",  height: "100px", backgroundColor: "white"}}>Etusivu</Typography>
                
               
              </Stack>
  
-             <Stack fontFamily={"Roboto"} style={{border: "5px solid blue", marginTop: "2px" , backgroundColor: "white", marginBottom: "2px", width: "1140px", height: "700px", fontSize: "40px"}}>
+             <Stack fontFamily={"Roboto"} style={{border: "5px solid black", marginTop: "2px" , backgroundColor: "white", marginBottom: "2px", width: "1140px", height: "700px", fontSize: "40px"}}>
                
                <Stack alignItems={"center"}>   
  
