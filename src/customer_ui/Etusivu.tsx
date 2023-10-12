@@ -28,6 +28,7 @@ const Frontpage: FC = () => {
      
        
          sx={{
+          fontFamily: "Montserrat",
            backgroundColor: "lightblue",
            paddingRight: 1.5,
            paddingLeft: 1.5,
@@ -40,30 +41,46 @@ const Frontpage: FC = () => {
          
          <Stack>
            <Box sx={{ marginTop: "10px" }}>
-             <Stack alignItems={"center"} bgcolor={"white"}>
-             
-        
-             
-             </Stack>
-          
+            
              <Stack textAlign={"center"}>
              
-               <Typography variant="h3" style={{ fontFamily: "Roboto", color: "black", fontSize: "50px", textDecoration: "underline", border:"5px solid black",  height: "100px", backgroundColor: "white"}}>Etusivu</Typography>
+               <Typography variant="h3" style={{ fontFamily: "Montserrat", color: "white", fontSize: "70px", border:"5px solid black",  height: "100px", backgroundColor: "black"}}>Ravintola Talli</Typography>
                
               
              </Stack>
  
-             <Stack fontFamily={"Roboto"} style={{border: "5px solid black", marginTop: "2px" , backgroundColor: "white", marginBottom: "2px", width: "1140px", height: "700px", fontSize: "40px"}}>
+             <Stack fontFamily={"Montserrat"} style={{border: "5px solid black", marginTop: "2px" , backgroundColor: "white", marginBottom: "2px", width: "1140px", height: "700px", fontSize: "40px"}}>
               
                
-               <Stack alignItems={"center"}>   
-               <img style={{borderRadius: '50%', marginBottom:"10px", marginTop:"30px", width: '1000px', height: '240px'}} src="https://media.tenor.com/-VG9cLwSYTcAAAAC/dancing-triangle-dancing.gif"  className="App-logo" alt="logo"  />
- 
+               <Stack >   
+               <img style={{marginTop:"0px", width: '1132px', height: '240px'}} src="https://www.xamkravintolat.fi/wp-content/uploads/sites/2/2017/02/talli_ylakuva.jpg"  className="App-logo" alt="logo"  />
+
+               <Stack >
+
+                <Box marginLeft={"40px"} marginTop={"20px"} border={"5px solid black"} width={"400px"} display={"flex"} flexDirection={"row"}>
+              
+
+               <Box fontSize={"25px"}>
+               <Typography  fontSize={"40px"} alignItems={"center"} >Avoinna</Typography>
+               <p>Ravintola Talli palvelee ma – pe klo 9-15
+                  <br/>
+                 Lounas klo 11-14
+                 <br/>
+                  Iltaisin ja viikonloppuisin tilauksesta.</p>
+                  </Box>
+
+                  <Box fontSize={"25px"} marginLeft={"400px"} border={"5px solid black"} width={"400px"}>
+               <Typography  fontSize={"40px"} alignItems={"center"} >Avoinna</Typography>
                
- 
-                        
-                 
-               
+             <p>Ruokalista</p>
+                
+                  </Box>
+                  </Box>
+
+                  
+
+               </Stack>
+
                
                </Stack>
                
