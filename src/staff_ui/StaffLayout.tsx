@@ -6,9 +6,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 
-const pages = ["Sivu1", "Sivu2", "Sivu3"]
+const pages = ["ManageOrders", "ManageMeals", "ManageStaff", "ManageCustomers"]
 
-const Layout = () => {
+const StaffLayout = () => {
     const navigoi = useNavigate();
     
     const [anchorNav, setAnchorNav] = useState<null | HTMLElement>(null);
@@ -24,7 +24,7 @@ const Layout = () => {
     return (
         <Container maxWidth='lg' disableGutters>
             <AppBar position='static' sx={{
-                bgcolor: '#c1a2a2',
+                bgcolor: 'lightblue',
                 boxShadow: 'none'
             }}>
                 <Toolbar disableGutters>
@@ -82,10 +82,6 @@ const Layout = () => {
                     </Box>
                     
                     <Box sx={{ flexGrow: 0 }}>
-                        <Button variant='contained' onClick={() => navigoi('/manageorders')}>
-                            Staff Login
-                        </Button>
-
                         <IconButton onClick={() => navigoi('/shoppingcart')}>
                             <ShoppingCartIcon />
                         </IconButton>
@@ -102,4 +98,4 @@ const Layout = () => {
     )
 }
 
-export default Layout;
+export default StaffLayout;
