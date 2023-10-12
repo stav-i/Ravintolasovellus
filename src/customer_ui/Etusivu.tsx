@@ -70,7 +70,7 @@ const Frontpage: FC = () => {
                   </Box>
 
                   <Box fontSize={"25px"} marginLeft={"400px"} border={"5px solid black"} width={"400px"}>
-               <Typography  fontSize={"40px"} alignItems={"center"} >Avoinna</Typography>
+               <Typography  fontSize={"40px"} alignItems={"center"} >Ruokalista</Typography>
                
              <p>Ruokalista</p>
                 
