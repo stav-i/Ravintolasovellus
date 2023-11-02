@@ -1,6 +1,6 @@
 
 import ServerData from './serverData';
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './pages/Layout';
@@ -11,6 +11,7 @@ import Sivu2 from './pages/Sivu2';
 import Sivu3 from './pages/Sivu3';
 import Cart from './pages/Cart';
 import Profile from './pages/Profile';
+
 
 const theme = createTheme({
   palette: {
@@ -32,6 +33,8 @@ const theme = createTheme({
 
 
 const App = () => {
+
+
   return (
 
     <ThemeProvider theme={theme}>
