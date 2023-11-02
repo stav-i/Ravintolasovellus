@@ -1,7 +1,10 @@
-import { Box, Container, Typography, Button, TextField } from '@mui/material';
+import { Box, Container, Typography, Button, TextField, colors } from '@mui/material';
 import { Stack } from '@mui/system';
 import { Outlet, useNavigate } from 'react-router-dom';
 import React, { useState } from "react";
+import { light } from '@mui/material/styles/createPalette';
+import { url } from 'inspector';
+
 
 const Profile = () => {
     const navigoi = useNavigate();
@@ -21,7 +24,15 @@ const Profile = () => {
         <Container>
             <Typography variant="h4">Login</Typography>
             <Box display="flex" sx={{ justifyContent: "center"}}>
-                    <form style = {{backgroundColor: 'blue'}}>
+                    <form style = {{
+                        border: "3px solid #000",
+                        padding: "16px",
+                        backgroundImage: `url(${'https://png.pngtree.com/thumb_back/fh260/background/20200804/pngtree-bright-color-gradient-gradation-change-background-image_377133.jpg'})`,
+                        borderRadius: "5px",
+                        height: "500px",
+                        backgroundRepeat: 'no-repeat',
+                        backgroundSize: 'cover'
+                        }}>
                         <TextField
                             label="Username"
                             fullWidth
@@ -39,15 +50,23 @@ const Profile = () => {
                             onChange={(e) => setPassword(e.target.value)}
                             margin="normal"
                         />
+                        <br />
+                        <br />
                         <Button 
                             variant="contained"
                             color="primary"
                             onClick={handleLogin}
                             fullWidth
-                            sx={{textTransform: "none"}}
+                            sx={{
+                                textTransform: "none",
+                                backgroundColor: "#ffa07a",
+                            }}
                             >
                             Login
                         </Button>
+                        <br />
+                        <br />
+                        <Typography textAlign={'center'}>Not a member? <a href="#">Sign up!</a></Typography>
                     </form>
             </Box>
         </Container>
