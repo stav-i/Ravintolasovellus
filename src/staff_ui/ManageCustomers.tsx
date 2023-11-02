@@ -2,14 +2,14 @@ import { Box, Container, Typography } from '@mui/material';
 import { Stack } from '@mui/system';
 import { Outlet, useNavigate } from 'react-router-dom';
 
-const Profile = () => {
+const ManageCustomers = () => {
     const navigoi = useNavigate();
 
     return (
         <Typography>
-            Profiili
+            Manage customers
         </Typography>
     )
 }
 
-export default Profile;
+export default ManageCustomers;

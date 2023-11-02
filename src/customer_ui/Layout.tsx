@@ -82,6 +82,10 @@ const Layout = () => {
                     </Box>
                     
                     <Box sx={{ flexGrow: 0 }}>
+                        <Button variant='contained' onClick={() => navigoi('/manageorders')}>
+                            Staff Login
+                        </Button>
+
                         <IconButton onClick={() => navigoi('/shoppingcart')}>
                             <ShoppingCartIcon />
                         </IconButton>
