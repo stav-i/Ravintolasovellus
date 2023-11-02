@@ -11,6 +11,11 @@ import Sivu2 from './customer_ui/Sivu2';
 import Sivu3 from './customer_ui/Sivu3';
 import Cart from './customer_ui/Cart';
 import Profile from './customer_ui/Profile';
+import StaffLayout from './staff_ui/StaffLayout';
+import ManageOrders from './staff_ui/ManageOrders';
+import ManageMeals from './staff_ui/ManageMeals';
+import ManageStaff from './staff_ui/ManageStaff';
+import ManageCustomers from './staff_ui/ManageCustomers';
 
 const theme = createTheme({
   palette: {
@@ -45,6 +50,15 @@ const App = () => {
             <Route path='/sivu3' element={<Sivu3 />} />
             <Route path='/shoppingcart' element={<Cart />} />
             <Route path='/profile' element={<Profile />} />
+          </Route>
+        </Routes>
+
+        <Routes>
+          <Route element={<StaffLayout />}>
+            <Route path='/managemeals' element={<ManageMeals />} />
+            <Route path='/manageorders' element={<ManageOrders />} />
+            <Route path='/managestaff' element={<ManageStaff />} />
+            <Route path='/managecustomers' element={<ManageCustomers />} />
           </Route>
         </Routes>
       </BrowserRouter>
