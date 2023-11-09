@@ -1,12 +1,7 @@
-
-import ServerData from './serverData';
-import { FC } from 'react';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './customer_ui/Layout';
 import Etusivu from './customer_ui/Etusivu';
 import Sivu1 from './customer_ui/Sivu1';
-import { CssBaseline } from '@mui/material';
 import Menu from './customer_ui/Menu';
 import Sivu3 from './customer_ui/Sivu3';
 import Cart from './customer_ui/Cart';
@@ -17,30 +12,8 @@ import ManageMeals from './staff_ui/ManageMeals';
 import ManageStaff from './staff_ui/ManageStaff';
 import ManageCustomers from './staff_ui/ManageCustomers';
 
-const theme = createTheme({
-  palette: {
-    background: {
-      default: "#f7f1f1",
-    },
-  },
-  components: {
-    MuiButton: {
-      styleOverrides:{
-        root: {
-          textTransform: 'lowercase',
-          color: '#000',
-          },
-      },
-    }
-  }
-});
-
-
 const App = () => {
   return (
-
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Layout />}>
@@ -62,9 +35,6 @@ const App = () => {
           </Route>
         </Routes>
       </BrowserRouter>
-      <ServerData />
-    </ThemeProvider>
-
   );
 }
 

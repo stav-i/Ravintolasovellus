@@ -4,90 +4,90 @@
         "nimi": "Affogato",
         "info": "Vaniljajäätelöä, kuumaa espressoa, paahdettua mantelia ja suklaakastiketta. L, G",
         "hinta": 8.90,
-        "kategoria": "jälkiruoka"
+        "kategoria": "Jälkiruoat"
     },
     {
         "id": "2",
         "nimi": "Torta al cioccolato",
         "info": "Suklaakakkua, mustaherukkahilloketta, persikkasorbettia ja marenkia. L, G",
         "hinta": 8.90,
-        "kategoria": "jälkiruoka"
+        "kategoria": "Jälkiruoat"
     },
     {
         "id": "3",
         "nimi": "Mela Cotta",
         "info": "Uuniomenaa, sitruunakinuskia, kauramurua ja vaniljajäätelöä. L, G",
         "hinta": 8.90,
-        "kategoria": "jälkiruoka"
+        "kategoria": "Jälkiruoat"
     },
     {
         "id": "4",
         "nimi": "Formaggio della Casa",
         "info": "Päivän juustovalikoima, rapeaa näkkäriä ja talon hilloketta G",
         "hinta": 9.20,
-        "kategoria": "jälkiruoka"
+        "kategoria": "Jälkiruoat"
     },
     {
         "id": "5",
         "nimi": "Pasta Carbonara",
         "info": "Ylikypsää possua, pekonia ja parmesaania. L, saatavana G ",
         "hinta": 18.90,
-        "kategoria": "pääruoka"
+        "kategoria": "Pääruoat"
     },
     {
         "id": "6",
         "nimi": "Risotto alle verdure",
         "info": "Punajuuririsottoa, paahdettua punajuurta, kikherneitä ja yrttiöljyä. L, G, saatavana veg",
         "hinta": 17.90,
-        "kategoria": "pääruoka"
+        "kategoria": "Pääruoat"
     },
     {
         "id": "7",
         "nimi": "Pasta con gamberi giganti",
         "info": "Yrteillä maustettua tomaattikastiketta, jättikatkaravun pyrstöjä, tuore-tomaattia ja cavi-arttia. L, saatavana G",
         "hinta": 21.20,
-        "kategoria": "pääruoka"
+        "kategoria": "Pääruoat"
     },
     {
         "id": "8",
         "nimi": "Margherita",
         "info": "Mozzarellaa, marinoitua tomaattia, basilikaöljyä VL",
         "hinta": 13.90,
-        "kategoria": "pizza"
+        "kategoria": "Pizzat"
     },
     {
         "id": "9",
         "nimi": "Hawaii",
         "info": "Aitoa palvikinkkua, ananasta. VL ",
         "hinta": 14.90,
-        "kategoria": "pizza"
+        "kategoria": "Pizzat"
     },
     {
         "id": "10",
         "nimi": "Pancetta e peperoni",
         "info": "Pekonia ja pepperonia",
         "hinta": 15.20,
-        "kategoria": "pizza"
+        "kategoria": "Pizzat"
     },
     {
         "id": "11",
         "nimi": "Tonno",
         "info": "Tonnikala, punasipuli, kapris, piparjuurimajoneesi. VL",
         "hinta": 16.90,
-        "kategoria": "pizza"
+        "kategoria": "Pizzat"
     },
     {
         "id": "12",
         "nimi": "Formaggio di capra",
         "info": "Vuohenjuusto, punajuuri, hunaja, chili, basilikaöljy. VL",
         "hinta": 17.60,
-        "kategoria": "pizza"
+        "kategoria": "Pizzat"
     },
     {
         "id": "13",
         "nimi": "Maito",
         "info": "",
         "hinta": 3.00,
-        "kategoria": "juoma"
+        "kategoria": "Juomat"
     }
 ]
