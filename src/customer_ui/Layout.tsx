@@ -6,7 +6,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 
-const pages = ["Sivu1", "Sivu2", "Sivu3"]
+const pages = ["Sivu1", "Menu", "Sivu3"]
 
 const Layout = () => {
     const navigoi = useNavigate();

@@ -1,20 +1,3 @@
 [
-    {
-        "id": "1",
-        "name": "Suklaakakku",
-        "hinta": 7.40,
-        "ingredients": ["suklaa", "kakku"]
-    },
-    {
-        "id": "2",
-        "name": "Kananuudelikeitto",
-        "hinta": 14.0,
-        "ingredients": ["kana", "nuudeli", "keitto"]
-    },
-    {
-        "id": "3",
-        "name": "Linssikeitto",
-        "hinta": 5.25,
-        "ingredients": ["punaiset linssit", "sipuli", "valkosipuli", "blahblah"]
-    }
+
 ]

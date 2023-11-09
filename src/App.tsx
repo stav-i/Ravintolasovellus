@@ -7,7 +7,7 @@ import Layout from './customer_ui/Layout';
 import Etusivu from './customer_ui/Etusivu';
 import Sivu1 from './customer_ui/Sivu1';
 import { CssBaseline } from '@mui/material';
-import Sivu2 from './customer_ui/Sivu2';
+import Menu from './customer_ui/Menu';
 import Sivu3 from './customer_ui/Sivu3';
 import Cart from './customer_ui/Cart';
 import Profile from './customer_ui/Profile';
@@ -46,7 +46,7 @@ const App = () => {
           <Route path='/' element={<Layout />}>
             <Route index element={<Etusivu />} />
             <Route path='/sivu1' element={<Sivu1 />} />
-            <Route path='/sivu2' element={<Sivu2 />} />
+            <Route path='/menu' element={<Menu />} />
             <Route path='/sivu3' element={<Sivu3 />} />
             <Route path='/shoppingcart' element={<Cart />} />
             <Route path='/profile' element={<Profile />} />
