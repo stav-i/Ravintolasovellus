@@ -23,7 +23,7 @@ const Profile = () => {
     return (
         <Container>
             <Typography variant="h4">Login</Typography>
-            <Box display="flex" sx={{ justifyContent: "center"}}>
+            <Box display="flex" sx={{ marginTop: "25px", alignItems: "center", justifyContent: "center"}}>
                     <form style = {{
                         border: "3px solid #000",
                         padding: "16px",
@@ -33,7 +33,7 @@ const Profile = () => {
                         backgroundRepeat: 'no-repeat',
                         backgroundSize: 'cover'
                         }}>
-                        <TextField
+                         <TextField sx={{backgroundColor: "white"}}
                             label="Username"
                             fullWidth
                             variant="outlined"
@@ -41,7 +41,7 @@ const Profile = () => {
                             onChange={(e) => setUsername(e.target.value)}
                             margin="normal"
                         />
-                        <TextField
+                        <TextField sx={{backgroundColor: "white"}}
                             label="Password"
                             fullWidth
                             variant="outlined"
@@ -66,7 +66,7 @@ const Profile = () => {
                         </Button>
                         <br />
                         <br />
-                        <Typography textAlign={'center'}>Not a member? <a href="#">Sign up!</a></Typography>
+                        <Typography onClick={() => navigoi("/createprofile")} textAlign={'center'}>Not a member? <a href="#">Sign up!</a></Typography>
                     </form>
             </Box>
         </Container>
