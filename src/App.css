@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.data-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 18px;
+  background-color: pink;
+  padding: 10px;
+  border-color: black;
+  border-style: double;
+  border-width: 2px;
+  
+}

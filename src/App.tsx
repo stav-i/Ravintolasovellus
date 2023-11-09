@@ -1,25 +1,76 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Tominnappi from './testi';
 
-function App() {
+import ServerData from './serverData';
+import { FC, useEffect, useState } from 'react';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './customer_ui/Layout';
+import Etusivu from './customer_ui/Etusivu';
+import Sivu1 from './customer_ui/Sivu1';
+import { CssBaseline } from '@mui/material';
+import Sivu2 from './customer_ui/Sivu2';
+import Sivu3 from './customer_ui/Sivu3';
+import Cart from './customer_ui/Cart';
+import Profile from './customer_ui/Profile';
+import CreateProfile from './customer_ui/CreateProfile';
+import StaffLayout from './staff_ui/StaffLayout';
+import ManageOrders from './staff_ui/ManageOrders';
+import ManageMeals from './staff_ui/ManageMeals';
+import ManageStaff from './staff_ui/ManageStaff';
+import ManageCustomers from './staff_ui/ManageCustomers';
+
+
+const theme = createTheme({
+  palette: {
+    background: {
+      default: "#f7f1f1",
+    },
+  },
+  components: {
+    MuiButton: {
+      styleOverrides:{
+        root: {
+          textTransform: 'lowercase',
+          color: '#000',
+          },
+      },
+    }
+  }
+});
+
+
+const App = () => {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img style={{borderRadius: '50%', marginBottom:"10px", marginTop:"80px", width: '300px', height: '300px'}} src="https://media.tenor.com/-VG9cLwSYTcAAAAC/dancing-triangle-dancing.gif"  className="App-logo" alt="logo"  />
-        <p>
-          
-          <Tominnappi />
-          
-          <br />
-          <img style={{width: '500px', height: '500px', padding: "50px"}} src="https://www.sttinfo.fi/data/images/00167/3bf032f4-5128-4142-a3a6-336c5c2861ed.jpg"/>
-        </p>
-        
-      </header>
-    </div>
+
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Layout />}>
+            <Route index element={<Etusivu />} />
+            <Route path='/sivu1' element={<Sivu1 />} />
+            <Route path='/sivu2' element={<Sivu2 />} />
+            <Route path='/sivu3' element={<Sivu3 />} />
+            <Route path='/shoppingcart' element={<Cart />} />
+            <Route path='/profile' element={<Profile />} />
+            <Route path='/createprofile' element={<CreateProfile />} />
+          </Route>
+        </Routes>
+
+        <Routes>
+          <Route element={<StaffLayout />}>
+            <Route path='/managemeals' element={<ManageMeals />} />
+            <Route path='/manageorders' element={<ManageOrders />} />
+            <Route path='/managestaff' element={<ManageStaff />} />
+            <Route path='/managecustomers' element={<ManageCustomers />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+      <ServerData />
+    </ThemeProvider>
+
   );
 }
-
 
 export default App;
