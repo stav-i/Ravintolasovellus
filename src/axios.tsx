@@ -8,3 +8,14 @@ export const fetchData = async () => {
     throw error;
   }
 };
+
+export const addData = async () => {
+  try{
+    const response = await axios.post('http://localhost:3001/api/data', {
+
+  }); return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
+
