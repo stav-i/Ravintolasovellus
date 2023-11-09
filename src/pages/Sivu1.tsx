@@ -2,12 +2,19 @@ import { Box, Container, Typography } from '@mui/material';
 import { Stack } from '@mui/system';
 import { useEffect, useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { fetchData, addData } from '../axios';
+import { fetchData } from '../axios';
 import '../App.css';
-import { DataItem } from '../dbButtonFunction';
+import React from 'react';
 
-
-
+interface DataItem {
+    id: number;
+    Etunimi: string; 
+    Sukunimi: string; 
+    Sahkoposti: string;
+    Puhelin: number;
+    Tyotehtava: string;
+    Palkka: Float32Array;
+  }
 
 const Sivu1 = () => {
     const navigoi = useNavigate();
@@ -30,7 +37,6 @@ const Sivu1 = () => {
     
 <Typography>
   <h1>Henkilökunta</h1>
-  <button onClick={addData}>Add new</button>
   <div className="data-grid">
     <table>
       <thead>
@@ -54,8 +60,6 @@ const Sivu1 = () => {
             <td>{item.Puhelin}</td>
             <td>{item.Tyotehtava}</td>
             <td>{item.Palkka} €</td>
-            <td><button>Edit</button></td>
-            <td><button>Delete</button></td>
           </tr>
         ))}
       </tbody>

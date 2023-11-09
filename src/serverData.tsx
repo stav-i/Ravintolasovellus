@@ -20,6 +20,7 @@ function ServerData() {
     <div>
       <h1>Data from Server</h1>
       <p>{data.message}</p>
+      
     </div>
   );
 }

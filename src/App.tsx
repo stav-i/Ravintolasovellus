@@ -1,6 +1,6 @@
 
 import ServerData from './serverData';
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './customer_ui/Layout';
@@ -16,6 +16,7 @@ import ManageOrders from './staff_ui/ManageOrders';
 import ManageMeals from './staff_ui/ManageMeals';
 import ManageStaff from './staff_ui/ManageStaff';
 import ManageCustomers from './staff_ui/ManageCustomers';
+
 
 const theme = createTheme({
   palette: {
@@ -37,6 +38,8 @@ const theme = createTheme({
 
 
 const App = () => {
+
+
   return (
 
     <ThemeProvider theme={theme}>
