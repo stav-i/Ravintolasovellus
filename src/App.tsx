@@ -11,6 +11,7 @@ import Sivu2 from './customer_ui/Sivu2';
 import Sivu3 from './customer_ui/Sivu3';
 import Cart from './customer_ui/Cart';
 import Profile from './customer_ui/Profile';
+import CreateProfile from './customer_ui/CreateProfile';
 import StaffLayout from './staff_ui/StaffLayout';
 import ManageOrders from './staff_ui/ManageOrders';
 import ManageMeals from './staff_ui/ManageMeals';
@@ -50,6 +51,7 @@ const App = () => {
             <Route path='/sivu3' element={<Sivu3 />} />
             <Route path='/shoppingcart' element={<Cart />} />
             <Route path='/profile' element={<Profile />} />
+            <Route path='/createprofile' element={<CreateProfile />} />
           </Route>
         </Routes>
 

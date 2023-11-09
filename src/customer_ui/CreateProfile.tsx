@@ -10,20 +10,25 @@ const Profile = () => {
     const navigoi = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [repassword, setRePassword] = useState("");
 
     const handleLogin = () => {
+        if (password == repassword){
+            navigoi("/");
+        }
+        else{
+            alert("Passwords do not match");
+        }
         // Here, you can add your login logic.
         // For simplicity, we'll just check if the username and password are not empty.
-        if (username && password) {
-          // Redirect to another page after successful login
-          navigoi("/");
-        }
+       
       };
     
     return (
         <Container>
             <Typography variant="h4">Login</Typography>
-            <Box display="flex" sx={{ marginTop: "25px", alignItems: "center", justifyContent: "center"}}>
+            <br/>
+            <Box sx={{ marginLeft: "334px", alignItems: "center", justifyContent: "center", width: "484px"}}>
                     <form style = {{
                         border: "3px solid #000",
                         padding: "16px",
@@ -33,7 +38,7 @@ const Profile = () => {
                         backgroundRepeat: 'no-repeat',
                         backgroundSize: 'cover'
                         }}>
-                         <TextField sx={{backgroundColor: "white"}}
+                        <TextField sx={{backgroundColor: "white"}}
                             label="Username"
                             fullWidth
                             variant="outlined"
@@ -41,6 +46,7 @@ const Profile = () => {
                             onChange={(e) => setUsername(e.target.value)}
                             margin="normal"
                         />
+                       
                         <TextField sx={{backgroundColor: "white"}}
                             label="Password"
                             fullWidth
@@ -48,6 +54,15 @@ const Profile = () => {
                             type="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                            margin="normal"
+                        />
+                         <TextField sx={{backgroundColor: "white"}}
+                            label="Re-enter password"
+                            fullWidth
+                            variant="outlined"
+                            type="password"
+                            value={repassword}
+                            onChange={(e) => setRePassword(e.target.value)}
                             margin="normal"
                         />
                         <br />
@@ -62,11 +77,11 @@ const Profile = () => {
                                 backgroundColor: "#ffa07a",
                             }}
                             >
-                            Login
+                            Create
                         </Button>
                         <br />
                         <br />
-                        <Typography onClick={() => navigoi("/createprofile")} textAlign={'center'}>Not a member? <a href="#">Sign up!</a></Typography>
+                        <Typography onClick={() => navigoi("/")} textAlign={'center'}>Cancel account creation <a href="#">Cancel</a></Typography>
                     </form>
             </Box>
         </Container>
