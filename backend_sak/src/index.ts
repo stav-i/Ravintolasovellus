@@ -3,10 +3,13 @@ console.log("wadap boyz");
 import express, { Express, Request, Response} from "express";
 import sqlite3 from "sqlite3";
 import cors from "cors";
+import bodyParser from "body-parser";
 
 const PORT = 3001;
 
 const app = express();
+
+app.use(bodyParser.json());
 
 const henkilosto = new sqlite3.Database('henkilosto.db');
 
@@ -35,15 +38,15 @@ app.get("/api", (req, res) => {
     });
   });
 
-  app.post('/api/data', (req, res) => {
-    const { Etunimi, Sukunimi, Salasana, Sahkoposti, Puhelin, Tyotehtava, Palkka } = req.body;
+  app.post('/api/data', async (req, res) => {
+    const { Etunimi, Sukunimi, Sahkoposti, Puhelin, Tyotehtava, Palkka } = req.body;
   
-    henkilosto.run('INSERT INTO Henkilosto (Etunimi, Sukunimi, Salasana, Sahkoposti, Puhelin, Tyotehtava, Palkka) VALUES (?, ?, ?, ?, ?, ?, ?)', 
-    [Etunimi, Sukunimi, Salasana, Sahkoposti, Puhelin, Tyotehtava, Palkka], (err) => {
+    henkilosto.run('INSERT INTO Henkilosto (Etunimi, Sukunimi, Sahkoposti, Puhelin, Tyotehtava, Palkka) VALUES (?, ?, ?, ?, ?, ?)', 
+    [Etunimi, Sukunimi, Sahkoposti, Puhelin, Tyotehtava, Palkka], (err) => {
       if (err) {
         return res.status(500).json({ error: 'Database error' });
       }
-      res.json({ Etunimi: 'Data added to the database' });
+      res.json({ success:true, message: 'Employee added' });
     });
   });
 
