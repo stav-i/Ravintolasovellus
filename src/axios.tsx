@@ -9,11 +9,14 @@ export const fetchData = async () => {
   }
 };
 
-export const addData = async () => {
+export const addData = async (newEmployeeData:any) => {
   try{
-    const response = await axios.post('http://localhost:3001/api/data', {
-
-  }); return response.data;
+    const response = await axios.post('http://localhost:3001/api/data', newEmployeeData, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+     return response.data;
   } catch (error) {
     throw error;
   }
