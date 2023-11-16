@@ -19,3 +19,36 @@ export const addData = async () => {
   }
 }
 
+//Tomin testi
+export const fetchData2 = async (userData: UserData) => {
+  try {
+    const response = await axios.post("http://localhost:3002/api/register", userData);
+    return response;
+  } catch (error) {
+    return Promise.reject(error); // Return a rejected Promise
+  }
+};
+
+export const addData2 = async (userData: UserData) => {
+  try {
+    const response = await axios.post(
+      "http://localhost:3002/api/register",
+      userData,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export interface UserData {
+  username: string;
+  password: string;
+  repassword: string;
+}

@@ -1,29 +1,31 @@
 import { Box, Container, Typography, Button, TextField, colors } from '@mui/material';
-import { Stack } from '@mui/system';
-import { Outlet, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import React, { useState } from "react";
-import { light } from '@mui/material/styles/createPalette';
-import { url } from 'inspector';
+import { UserData, fetchData2 } from '../axios';
 
 
-const Profile = () => {
+  const Profile = () => {
     const navigoi = useNavigate();
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [repassword, setRePassword] = useState("");
-
-    const handleLogin = () => {
-        if (password == repassword){
-            navigoi("/");
+    const [username, setUsername] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const [repassword, setRePassword] = useState<string>("");
+  
+    const handleLogin = async () => {
+      try {
+        const userData: UserData = { username, password, repassword };
+        const response = await fetchData2(userData);
+  
+        if (response.status === 201) { // Check for the correct status code
+          alert("User registered successfully");
+          navigoi("/profile"); // Navigate only if registration is successful
+        } else {
+          alert("Error registering user");
         }
-        else{
-            alert("Passwords do not match");
-        }
-        // Here, you can add your login logic.
-        // For simplicity, we'll just check if the username and password are not empty.
-       
-      };
-    
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Something went wrong");
+      }
+    };
     return (
         <Container>
             <Typography variant="h4">Login</Typography>
@@ -67,17 +69,17 @@ const Profile = () => {
                         />
                         <br />
                         <br />
-                        <Button 
+                        <Button
                             variant="contained"
                             color="primary"
                             onClick={handleLogin}
                             fullWidth
                             sx={{
-                                textTransform: "none",
-                                backgroundColor: "#ffa07a",
+                            textTransform: "none",
+                            backgroundColor: "#ffa07a",
                             }}
-                            >
-                            Create
+                        >
+                         Create
                         </Button>
                         <br />
                         <br />

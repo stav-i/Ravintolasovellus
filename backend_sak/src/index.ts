@@ -50,3 +50,50 @@ app.get("/api", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
+
+//Tomin testaus kirjautumis databasen ja kirjautumisen tekemiseen
+
+const PORT2 = 3002;
+const kirjautuminen = new sqlite3.Database("kirjautuminen.db");
+
+kirjautuminen.serialize(() => {
+  kirjautuminen.run(
+    'CREATE TABLE IF NOT EXISTS Users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT)'
+  );
+});
+
+app.use(cors());
+app.use(express.json()); // Add this line to parse JSON requests
+
+app.post("/api/register", async (req: Request, res: Response) => {
+  try {
+    interface RegistrationData {
+      username: string;
+      password: string;
+    }
+
+    console.log("Received request:", req.body);
+    const { username, password }: RegistrationData = req.body;
+
+    console.log("Received data:", { username, password });
+
+    await kirjautuminen.run(
+      "INSERT INTO Users (username, password) VALUES (?, ?)",
+      [username, password]
+    );
+
+    res.status(201).json({ message: "User registered successfully" });
+  } catch (error) {
+    console.error("Server error:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+app.get("/api", (req, res) => {
+  const username = req.query.username; // Assuming the username is in the query parameters
+  res.json({ message: `Hello from ${username}!` });
+});
+
+app.listen(PORT2, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
