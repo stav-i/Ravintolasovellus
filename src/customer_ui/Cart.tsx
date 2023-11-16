@@ -42,9 +42,9 @@ const Cart = () => {
             <Stack width={{ md: "60%" }} marginRight={{ md: "3% " }} marginBottom='20px'>
                 <Typography variant="h5">Ostoskorin sisältö</Typography>
                 <Stack bgcolor='#f1eaea' minHeight="100px" padding="10px 10px 0 10px" marginBottom='20px'>
-                    {cart.map(meal => {
+                    {cart.map((meal, i) => {
                         return (
-                            <Stack key={meal.id} sx={{
+                            <Stack key={i} sx={{
                                 bgcolor: "#fafafa",
                                 borderRadius: 1,
                                 padding: "5px",
@@ -58,8 +58,9 @@ const Cart = () => {
                                 <Typography variant="subtitle2">{meal.info}</Typography>
                                 <Stack direction='row' justifyContent='flex-end'>
                                     <IconButton onClick={() => {
-                                        const newCart = cart.filter(item => item.id !== meal.id);
-                                        localStorage.setItem("cart", JSON.stringify(newCart));
+                                        let index = cart.findIndex(x => x.id === meal.id);
+                                        cart.splice(index, 1);
+                                        localStorage.setItem("cart", JSON.stringify(cart));
                                         loadCart();
                                     }}
                                         sx={{ width: '22px', height: '22px', margin: '0 5px 0 5px' }}>

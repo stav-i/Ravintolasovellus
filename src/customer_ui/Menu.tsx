@@ -24,9 +24,9 @@ const Menu = () => {
 
     return (
         <>
-        {kategoriat.map((katg, i) => {
+        {kategoriat.map(katg => {
             return(
-                <Stack padding='10px 20px 0 20px' key={i}>
+                <Stack padding='10px 20px 0 20px' key={katg}>
                     <Typography variant='h4'>{katg}</Typography>
                     <Divider sx={{ bgcolor:'black', borderBottomWidth: '2px', marginBottom:'20px'}}/>
                         <Grid container spacing={4} marginBottom="30px">
