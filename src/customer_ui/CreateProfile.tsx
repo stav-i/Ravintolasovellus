@@ -10,22 +10,41 @@ import { UserData, fetchData2 } from '../axios';
     const [password, setPassword] = useState<string>("");
     const [repassword, setRePassword] = useState<string>("");
   
+  
     const handleLogin = async () => {
       try {
-        const userData: UserData = { username, password, repassword };
-        const response = await fetchData2(userData);
-  
-        if (response.status === 201) { // Check for the correct status code
-          alert("User registered successfully");
-          navigoi("/profile"); // Navigate only if registration is successful
-        } else {
-          alert("Error registering user");
+        // Assuming UserData type is defined somewhere in your code
+        // For example: type UserData = { username: string; password: string; repassword: string; };
+    
+        // Validate input fields first
+        if (!username || !password || !repassword) {
+          throw new Error('Username, password, and re-entered password cannot be empty');
+        } else if (password !== repassword) {
+          throw new Error('Passwords do not match');
         }
-      } catch (error) {
-        console.error("Error:", error);
-        alert("Something went wrong");
+    
+        // If validation passes, create the userData object
+        const userData: UserData = { username, password, repassword };
+    
+        // Now check if the fields are non-empty before making the API call
+        if (userData.username && userData.password && userData.repassword) {
+          const response = await fetchData2(userData);
+    
+          if (response.status === 201) {
+            alert('User registered successfully');
+            navigoi('/profile'); // Navigate only if registration is successful
+          }
+        } else {
+          throw new Error('Invalid input data');
+        }
+      } catch (error: any) {
+        console.error('Error:', error.message);
+        alert(error.message);
       }
     };
+    
+
+
     return (
         <Container>
             <Typography variant="h4">Login</Typography>
