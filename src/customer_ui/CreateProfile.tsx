@@ -3,20 +3,15 @@ import {  useNavigate } from 'react-router-dom';
 import React, { useState } from "react";
 import { UserData, fetchData2 } from '../axios';
 
-
   const Profile = () => {
     const navigoi = useNavigate();
     const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [repassword, setRePassword] = useState<string>("");
   
-  
     const handleLogin = async () => {
       try {
-        // Assuming UserData type is defined somewhere in your code
-        // For example: type UserData = { username: string; password: string; repassword: string; };
-    
-        // Validate input fields first
+        
         if (!username || !password || !repassword) {
           throw new Error('Username, password, and re-entered password cannot be empty');
         } else if (password !== repassword) {
@@ -43,8 +38,6 @@ import { UserData, fetchData2 } from '../axios';
       }
     };
     
-
-
     return (
         <Container>
             <Typography variant="h4">Login</Typography>
