@@ -50,6 +50,18 @@ app.get("/api", (req, res) => {
     });
   });
 
+app.post("/login", async (req, res) => {
+  console.log("login request:");
+  try{
+    console.log(req.body);
+    var responsedata="login: "+req.body.name+","+req.body.pw;
+    return res.status(200).json(responsedata);
+  }catch(error:any){
+    console.log("error");
+    return res.status(418).json({error:"something did not work"});
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });

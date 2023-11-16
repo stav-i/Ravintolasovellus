@@ -11,12 +11,29 @@ const Profile = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleLogin = () => {
-        // Here, you can add your login logic.
-        // For simplicity, we'll just check if the username and password are not empty.
+    const loginClick=(e: any)=>{
+      handleLogin("lol");
+    }
+    const handleLogin = async (a:string) => {
+      try {
+        var resp=await fetch("/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            name: username,
+            pw: password
+          })
+        });
+        var data=await resp.json();
+        console.log(data);
+      } catch (error: any) {
+        console.error(error);
+      }
         if (username && password) {
           // Redirect to another page after successful login
-          navigoi("/");
+          //navigoi("/");
         }
       };
     
@@ -55,7 +72,7 @@ const Profile = () => {
                         <Button 
                             variant="contained"
                             color="primary"
-                            onClick={handleLogin}
+                            onClick={loginClick}
                             fullWidth
                             sx={{
                                 textTransform: "none",
