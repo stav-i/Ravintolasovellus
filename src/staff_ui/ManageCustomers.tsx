@@ -5,6 +5,22 @@ import { Outlet, useNavigate } from 'react-router-dom';
 const ManageCustomers = () => {
     const navigoi = useNavigate();
 
+    // mock data
+    const customers = [{"id": 1, "name": "name", "info": "info"}, {"id": 2, "name": "name", "info": "info"}, {"id": 3, "name": "name", "info": "info"}]
+
+    var customer_row = customers.map(customer => (
+        <ListItem>
+        <Grid key={customer.id} container>
+            <Grid item xs={4}>
+                <Typography>{customer.name}</Typography>
+            </Grid>
+            <Grid item xs={8}>
+                <Typography>{customer.info}</Typography>
+            </Grid>
+        </Grid>
+        </ListItem>
+    ))
+
     return (
         <Grid
             sx={{
@@ -33,18 +49,7 @@ const ManageCustomers = () => {
                     overflow: 'auto',
                     maxHeight: 300
                 }}>
-                    <ListItem>Listitem</ListItem>
-                    <ListItem>Listitem</ListItem>
-                    <ListItem>Listitem</ListItem>
-                    <ListItem>Listitem</ListItem>
-                    <ListItem>Listitem</ListItem>
-                    <ListItem>Listitem</ListItem>
-                    <ListItem>Listitem</ListItem>
-                    <ListItem>Listitem</ListItem>
-                    <ListItem>Listitem</ListItem>
-                    <ListItem>Listitem</ListItem>
-                    <ListItem>Listitem</ListItem>
-                    <ListItem>Listitem</ListItem>
+                    {customer_row}
             </List>
             </Stack>
         </Grid>

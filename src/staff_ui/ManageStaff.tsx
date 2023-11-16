@@ -5,6 +5,22 @@ import { Outlet, useNavigate } from 'react-router-dom';
 const ManageStaff = () => {
     const navigoi = useNavigate();
 
+    // mock data
+    const staff = [{"id": 1, "name": "name", "info": "info"}, {"id": 2, "name": "name", "info": "info"}, {"id": 3, "name": "name", "info": "info"}]
+
+    var staff_row = staff.map(staffmember => (
+        <ListItem>
+        <Grid key={staffmember.id} container>
+            <Grid item xs={4}>
+                <Typography>{staffmember.name}</Typography>
+            </Grid>
+            <Grid item xs={8}>
+                <Typography>{staffmember.info}</Typography>
+            </Grid>
+        </Grid>
+        </ListItem>
+    ))
+
     return (
         <Grid
             sx={{
@@ -33,18 +49,7 @@ const ManageStaff = () => {
                     overflow: 'auto',
                     maxHeight: 300
                 }}>
-                    <ListItem>Listitem</ListItem>
-                    <ListItem>Listitem</ListItem>
-                    <ListItem>Listitem</ListItem>
-                    <ListItem>Listitem</ListItem>
-                    <ListItem>Listitem</ListItem>
-                    <ListItem>Listitem</ListItem>
-                    <ListItem>Listitem</ListItem>
-                    <ListItem>Listitem</ListItem>
-                    <ListItem>Listitem</ListItem>
-                    <ListItem>Listitem</ListItem>
-                    <ListItem>Listitem</ListItem>
-                    <ListItem>Listitem</ListItem>
+                    {staff_row}
             </List>
             </Stack>
         </Grid>
