@@ -51,6 +51,8 @@ app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
 
+
+
 //Tomin testaus kirjautumis databasen ja kirjautumisen tekemiseen
 
 const PORT2 = 3002;
@@ -89,13 +91,17 @@ app.post("/api/register", async (req: Request, res: Response) => {
   }
 });
 
-app.get("/api", (req, res) => {
-  const username = req.query.username; // Assuming the username is in the query parameters
-  res.json({ message: `Hello from ${username}!` });
+app.get('/api/register', (req, res) => {
+  kirjautuminen.all('SELECT * FROM Users', (err, rows) => {
+    if (err) {
+      return res.status(500).json({ error: 'Database error' });
+    }
+    res.json(rows);
+  });
 });
+
 
 app.listen(PORT2, () => {
   console.log(`Create account server is running on http://localhost:${PORT2} :O`);
 });
 
-//Sisäänkirjautuminen

@@ -47,6 +47,15 @@ export const addData2 = async (userData: UserData) => {
   }
 };
 
+export const fetchDatafromDatabase = async () => {
+  try {
+    const response = await axios.get('http://localhost:3002/api/register');
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export interface UserData {
   username: string;
   password: string;
