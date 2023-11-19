@@ -36,8 +36,7 @@ const ServerData: React.FC = () => {
       <h1>Data from Server</h1>
       <p>{data.message}</p>
 
-      <h1>Tomin testi</h1>
-      <p>{data2.message}</p>
+      
     </div>
   );
 };
