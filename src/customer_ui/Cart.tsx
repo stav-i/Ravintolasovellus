@@ -62,6 +62,7 @@ const Cart = () => {
                                         cart.splice(index, 1);
                                         localStorage.setItem("cart", JSON.stringify(cart));
                                         loadCart();
+                                        window.dispatchEvent(new Event('storage'));
                                     }}
                                         sx={{ width: '22px', height: '22px', margin: '0 5px 0 5px' }}>
                                         <DeleteIcon />

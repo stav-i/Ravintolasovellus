@@ -1,9 +1,17 @@
-import { AppBar, Box, Button, Container, CssBaseline, IconButton, Menu, MenuItem, ThemeProvider, Toolbar, Typography, createTheme } from '@mui/material';
+import { AppBar, Badge, Box, Button, Container, CssBaseline, IconButton, Menu, MenuItem, ThemeProvider, Toolbar, Typography, createTheme } from '@mui/material';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
+
+interface Meal {
+    id: string,
+    nimi: string,
+    info: string,
+    hinta: number,
+    kategoria: string
+}
 
 const pages = ["Sivu1", "Menu", "Sivu3"]
 
@@ -34,7 +42,7 @@ const Layout = () => {
                 default: "#f7f1f1",
             },
             secondary: {
-                main: "#be7e7e"
+                main: "#c38080"
             }
         },
         typography: {
@@ -84,7 +92,20 @@ const Layout = () => {
     const navigoi = useNavigate();
 
     const [anchorNav, setAnchorNav] = useState<null | HTMLElement>(null);
+    const [cart, setCart] = useState<Meal[]>([]);
 
+    useEffect(() => {
+        loadCart();
+
+        window.addEventListener('storage', loadCart)
+        return () => window.removeEventListener('storage', loadCart)
+    }, [])
+
+    const loadCart = () => {
+        const data = JSON.parse(localStorage.getItem('cart') || "[]");
+        setCart(data);
+    }
+    
     const handleOpenMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorNav(event.currentTarget);
     }
@@ -97,7 +118,7 @@ const Layout = () => {
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <Container maxWidth='lg' disableGutters>
-                <AppBar position='static' sx={{
+                <AppBar position='sticky' sx={{
                     bgcolor: '#c1a2a2',
                     boxShadow: 'none'
                 }}>
@@ -157,7 +178,10 @@ const Layout = () => {
 
                         <Box sx={{ flexGrow: 0 }}>
                             <IconButton onClick={() => navigoi('/shoppingcart')}>
-                                <ShoppingCartIcon />
+                                <Badge badgeContent={cart.length} color='error'>
+                                    <ShoppingCartIcon />
+                                </Badge>
+                                
                             </IconButton>
                             <IconButton onClick={() => navigoi('/profile')}>
                                 <AccountBoxIcon />

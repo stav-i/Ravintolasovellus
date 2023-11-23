@@ -44,6 +44,7 @@ const Menu = () => {
                                             <IconButton onClick={() => {
                                                     cart.push(meal);
                                                     localStorage.setItem("cart", JSON.stringify(cart));
+                                                    window.dispatchEvent(new Event('storage'));
                                                 }}
                                                 sx={{ width: '30px', height: '30px', margin: '0 7px 0 7px'}}>
                                                 <AddShoppingCartIcon />
