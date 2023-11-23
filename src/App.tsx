@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+
+import ServerData from './serverData';
+import { FC, useEffect, useState } from 'react';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+>>>>>>> 6bf82816242fa798d36e4542bc347b9fe0649151
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './customer_ui/Layout';
 import Etusivu from './customer_ui/Etusivu';
@@ -6,13 +13,18 @@ import Menu from './customer_ui/Menu';
 import Sivu3 from './customer_ui/Sivu3';
 import Cart from './customer_ui/Cart';
 import Profile from './customer_ui/Profile';
+import CreateProfile from './customer_ui/CreateProfile';
 import StaffLayout from './staff_ui/StaffLayout';
 import ManageOrders from './staff_ui/ManageOrders';
 import ManageMeals from './staff_ui/ManageMeals';
 import ManageStaff from './staff_ui/ManageStaff';
 import ManageCustomers from './staff_ui/ManageCustomers';
+import Login from './customer_ui/Login';
+
 
 const App = () => {
+
+
   return (
       <BrowserRouter>
         <Routes>
@@ -22,7 +34,9 @@ const App = () => {
             <Route path='/menu' element={<Menu />} />
             <Route path='/sivu3' element={<Sivu3 />} />
             <Route path='/shoppingcart' element={<Cart />} />
+            <Route path='/login' element={<Login />} />
             <Route path='/profile' element={<Profile />} />
+            <Route path='/createprofile' element={<CreateProfile />} />
           </Route>
         </Routes>
 

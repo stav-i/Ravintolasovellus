@@ -53,7 +53,7 @@ const Frontpage: FC = () => {
 
 
             <Stack >
-              <img style={{ marginTop: "0px", width: '1132px', height: '240px' }} src="https://www.xamkravintolat.fi/wp-content/uploads/sites/2/2017/02/talli_ylakuva.jpg" className="App-logo" alt="logo" />
+              <img style={{ marginTop: "0px", width: '1132px', height: '240px' }} src="https://www.xamkravintolat.fi/wp-content/uploads/sites/2/2017/02/talli_ylakuva.jpg" className="Etusivukuva" alt="logo" />
 
               <Stack >
 
