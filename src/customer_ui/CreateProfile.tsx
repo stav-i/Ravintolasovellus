@@ -9,7 +9,7 @@ import { UserData, fetchData2 } from '../axios';
     const [password, setPassword] = useState<string>("");
     const [repassword, setRePassword] = useState<string>("");
   
-    const handleLogin = async () => {
+    const createProfile = async () => {
       try {
         
         if (!username || !password || !repassword) {
@@ -84,7 +84,7 @@ import { UserData, fetchData2 } from '../axios';
                         <Button
                             variant="contained"
                             color="primary"
-                            onClick={handleLogin}
+                            onClick={createProfile}
                             fullWidth
                             sx={{
                             textTransform: "none",

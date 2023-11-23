@@ -31,6 +31,15 @@ export const fetchData2 = async (userData: UserData) => {
     return Promise.reject(error); // Return a rejected Promise
   }
 };
+//Tomin paras testi (login)
+export const fetchData3 = async (userData: UserData) => {
+  try {
+    const response = await axios.post("http://localhost:3002/api/login", userData);
+    return response;
+  } catch (error) {
+    return Promise.reject(error); // Return a rejected Promise
+  }
+};
 
 export const addData2 = async (userData: UserData) => {
   try {
@@ -52,7 +61,7 @@ export const addData2 = async (userData: UserData) => {
 
 export const fetchDatafromDatabase = async () => {
   try {
-    const response = await axios.get('http://localhost:3002/api/register');
+    const response = await axios.get('http://localhost:3002/api/getuserdata');
     return response.data;
   } catch (error) {
     throw error;

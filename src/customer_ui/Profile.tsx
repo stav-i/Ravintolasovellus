@@ -6,6 +6,8 @@ import { UserData, addData, fetchData, fetchDatafromDatabase } from '../axios';
 
 
 const Profile = () => {
+  const [data, setData] = useState<UserData[]>([]);
+  const [mydata, setMyData] = useState<UserData>();
     const navigoi = useNavigate();
    
 
@@ -14,7 +16,7 @@ const Profile = () => {
       };
 
     
-    const [data, setData] = useState<UserData[]>([]);
+    
 
     useEffect(() => {
       const fetchDataFromAPI = async () => {
@@ -29,6 +31,7 @@ const Profile = () => {
       fetchDataFromAPI();
     }, []);
 
+    
     
     return (
 
