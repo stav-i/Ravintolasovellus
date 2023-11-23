@@ -13,7 +13,6 @@ const ManageMeals = () => {
         bgcolor: 'gray'
     }
 
-
     var meal_row = meals.map(meal => (
         <ListItem>
         <Grid key={meal.id} container>
@@ -41,25 +40,24 @@ const ManageMeals = () => {
                     alignItems: 'center',
                     padding: 2
                 }}>
-            <Typography>
-            Manage meals
-            </Typography>
+                <Typography>Manage meals</Typography>
             </Stack>
+
             <Stack
                 sx={{
                     alignItems: 'center',
                     padding: 5
                 }}>
-            <List
-                sx={{
-                    width:'100%',
-                    maxWidth: 1000,
-                    bgcolor: 'gray',
-                    overflow: 'auto',
-                    maxHeight: 500
-                }}>
-                {meal_row}                    
-            </List>
+                <List
+                    sx={{
+                        width:'100%',
+                        maxWidth: 1000,
+                        bgcolor: 'gray',
+                        overflow: 'auto',
+                        maxHeight: 500
+                    }}>
+                    {meal_row}                    
+                </List>
             </Stack>
         </Grid>
     )

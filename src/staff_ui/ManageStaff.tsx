@@ -32,25 +32,24 @@ const ManageStaff = () => {
                     alignItems: 'center',
                     padding: 2
                 }}>
-            <Typography>
-            Manage staff
-            </Typography>
+                <Typography>Manage staff</Typography>
             </Stack>
+            
             <Stack
                 sx={{
                     alignItems: 'center',
                     padding: 5
                 }}>
-            <List
-                sx={{
-                    width:'100%',
-                    maxWidth: 600,
-                    bgcolor: 'gray',
-                    overflow: 'auto',
-                    maxHeight: 300
-                }}>
-                    {staff_row}
-            </List>
+                <List
+                    sx={{
+                        width:'100%',
+                        maxWidth: 600,
+                        bgcolor: 'gray',
+                        overflow: 'auto',
+                        maxHeight: 300
+                    }}>
+                        {staff_row}
+                </List>
             </Stack>
         </Grid>
     )

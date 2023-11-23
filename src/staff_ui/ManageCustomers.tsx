@@ -32,26 +32,26 @@ const ManageCustomers = () => {
                     alignItems: 'center',
                     padding: 2
                 }}>
-            <Typography>
-            Manage customers
-            </Typography>
+                <Typography>Manage customers</Typography>
             </Stack>
+
             <Stack
                 sx={{
                     alignItems: 'center',
                     padding: 5
                 }}>
-            <List
-                sx={{
-                    width:'100%',
-                    maxWidth: 600,
-                    bgcolor: 'gray',
-                    overflow: 'auto',
-                    maxHeight: 300
-                }}>
-                    {customer_row}
-            </List>
+                <List
+                    sx={{
+                        width:'100%',
+                        maxWidth: 600,
+                        bgcolor: 'gray',
+                        overflow: 'auto',
+                        maxHeight: 300
+                    }}>
+                        {customer_row}
+                </List>
             </Stack>
+            
         </Grid>
     )
 }
