@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-=======
-
 import ServerData from './serverData';
 import { FC, useEffect, useState } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
->>>>>>> 6bf82816242fa798d36e4542bc347b9fe0649151
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './customer_ui/Layout';
 import Etusivu from './customer_ui/Etusivu';
@@ -21,10 +17,7 @@ import ManageStaff from './staff_ui/ManageStaff';
 import ManageCustomers from './staff_ui/ManageCustomers';
 import Login from './customer_ui/Login';
 
-
 const App = () => {
-
-
   return (
       <BrowserRouter>
         <Routes>
