@@ -50,8 +50,40 @@ app.get("/api", (req, res) => {
     });
   });
 
-  /*
-  //tästä PITÄÄLLINEN ottaa mallia
+  app.put('/api/data/:id', (req, res) => {
+    const id = req.params.id;
+    const { Etunimi, Sukunimi, Sahkoposti, Puhelin, Tyotehtava, Palkka } = req.body;
+    const query = `
+      UPDATE henkilosto
+      SET Etunimi=?, Sukunimi=?, Sahkoposti=?, Puhelin=?, Tyotehtava=?, Palkka=?
+      WHERE id=?
+    `;
+    const values = [Etunimi, Sukunimi, Sahkoposti, Puhelin, Tyotehtava, Palkka, id];
+  
+    henkilosto.run(query, values, function (err) {
+      if (err) {
+        res.status(500).json({ error: err.message });
+        return;
+      }
+  
+      res.json({ id });
+    });
+  });
+
+  app.delete('/api/data/:id', (req, res) => {
+    const id = req.params.id;
+    const query = 'DELETE FROM henkilosto WHERE id=?';
+  
+    henkilosto.run(query, id, function (err) {
+      if (err) {
+        res.status(500).json({ error: err.message });
+        return;
+      }
+  
+      res.json({ id });
+    });
+  });
+
 app.post("/login", async (req, res) => {
   console.log("login request:");
   try{

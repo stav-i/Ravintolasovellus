@@ -22,6 +22,22 @@ export const addData = async (newEmployeeData:any) => {
   }
 }
 
+export const editData = async (employeeData:any) => {
+  const { id, ...dataWithoutId } = employeeData;
+
+  try {
+    const response = await axios.put(`http://localhost:3001/api/data/${id}`, dataWithoutId);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const deleteData = async (id:any) => {
+  const response = await axios.delete(`http://localhost:3001/api/data/${id}`);
+  return response.data;
+};
+
 //Tomin testi
 export const fetchData2 = async (userData: UserData) => {
   try {
