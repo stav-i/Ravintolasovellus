@@ -4,6 +4,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import React, { useState } from "react";
 import { light } from '@mui/material/styles/createPalette';
 import { url } from 'inspector';
+import { UserData, fetchData3 } from '../axios';
 
 
 const Login = () => {
@@ -11,12 +12,30 @@ const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleLogin = () => {
-        // Here, you can add your login logic.
-        // For simplicity, we'll just check if the username and password are not empty.
-        if (username && password) {
-          // Redirect to another page after successful login
-          navigoi("/");
+    const handleLogin = async () => {
+        try {
+          
+          if (!username || !password) {
+            throw new Error('Username and password cannot be empty');
+          }
+      
+          // If validation passes, create the userData object
+          const userData: UserData = { username, password, repassword: '' };
+      
+          // Now check if the fields are non-empty before making the API call
+          if (userData.username && userData.password) {
+            const response = await fetchData3(userData);
+      
+            if (response.status === 200) {
+              alert('User logged in successfully');
+              navigoi('/profile'); // Navigate only if registration is successful
+            }
+          } else {
+            throw new Error('Invalid input data');
+          }
+        } catch (error: any) {
+          console.error('Error:', error.message);
+          alert(error.message);
         }
       };
     

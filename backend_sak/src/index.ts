@@ -95,7 +95,7 @@ app.post("/login", async (req, res) => {
     return res.status(418).json({error:"something did not work"});
   }
 });
-
+*/
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
@@ -140,8 +140,36 @@ app.post("/api/register", async (req: Request, res: Response) => {
   }
 });
 
-app.get('/api/register', (req, res) => {
-  kirjautuminen.all('SELECT * FROM Users', (err, rows) => {
+//tomin login testi
+interface LoginData {
+  id: number;
+  username: string;
+  password: string;
+}
+
+app.post("/api/login", async (req: Request, res: Response) => {
+  console.log("login request:");
+
+  try {
+    const { username, password } = req.body;
+
+    kirjautuminen.all("SELECT * FROM Users WHERE username = ? AND password = ?", [username, password], (err, rows: LoginData[]) => {
+      if (!err && rows.length > 0) {
+        const loggedInUser = rows[0].username;
+        console.log("User logged in:", loggedInUser);
+        return res.status(200).json({ message: "Login successful", username: loggedInUser });
+      } else {
+        return res.status(401).json({ error: "Invalid username or password" });
+      }
+    });
+  } catch (error) {
+    console.log("error");
+    return res.status(418).json({ error: "something did not work" });
+  }
+});
+
+app.get("/api/getuserdata", async (req: Request, res: Response) => {
+  kirjautuminen.all("SELECT * FROM Users", (err, rows) => {
     if (err) {
       return res.status(500).json({ error: 'Database error' });
     }
@@ -149,8 +177,6 @@ app.get('/api/register', (req, res) => {
   });
 });
 
-
 app.listen(PORT2, () => {
   console.log(`Create account server is running on http://localhost:${PORT2} :O`);
 });
-
