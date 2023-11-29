@@ -95,7 +95,7 @@ app.post("/login", async (req, res) => {
     return res.status(418).json({error:"something did not work"});
   }
 });
-*/
+
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
