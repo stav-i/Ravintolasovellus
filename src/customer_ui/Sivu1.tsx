@@ -64,7 +64,6 @@ const Sivu1 = () => {
       )
     );
   
-    // If editingEmployee is null, it means we are adding a new employee
     if (id === null) {
       setNewEmployee((prevNewEmployee) => ({
         ...prevNewEmployee,
@@ -120,6 +119,10 @@ const Sivu1 = () => {
   return (
     <Typography>
       <h1>Henkilökunta</h1>
+
+      <Button variant='contained' onClick={toggleForm}>
+        {showForm?'Piilota lomake' : 'Lisää työntekijä'}
+      </Button>
 
       {showForm && (
         <div>
