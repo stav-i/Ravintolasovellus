@@ -1,13 +1,18 @@
 import { Box, Container, Typography, Button, TextField, colors } from '@mui/material';
 import { Stack } from '@mui/system';
 import { Outlet, useNavigate } from 'react-router-dom';
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import { light } from '@mui/material/styles/createPalette';
 import { url } from 'inspector';
 import { UserData, fetchData3 } from '../axios';
+import { user } from '../types';
 
+type Props={
+  currentuser: user;
+  setuser: (name:string, role:number)=>void;
+}
 
-const Login = () => {
+const Login: FC<Props>=({currentuser,setuser})=>{
     const navigoi = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -27,7 +32,8 @@ const Login = () => {
             const response = await fetchData3(userData);
       
             if (response.status === 200) {
-              alert('User logged in successfully');
+              //console.log("login successful");
+              setuser(response.data.username,1);
               navigoi('/profile'); // Navigate only if registration is successful
             }
           } else {
