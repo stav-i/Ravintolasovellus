@@ -195,6 +195,8 @@ const Cart: FC<Props> = ({currentuser}) => {
                         display: currentuser.role == 0 ? 'none' : 'block'
                     }}
                         onClick={() => console.log(cart)}>Tilaa</Button>
+
+                    <Typography style={{display: currentuser.role == 1 ? 'none' : 'block'}}>Et ole kirjautunut sisään :{'<<<'}</Typography>
                     <Button variant='contained' color='secondary' style={{
                         display: currentuser.role == 1 ? 'none' : 'block'
                     }}
