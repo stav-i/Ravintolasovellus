@@ -1,11 +1,17 @@
 import { Button, Divider, FormControlLabel, IconButton, Radio, Typography } from '@mui/material';
 import { Stack } from '@mui/system';
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { user } from '../types';
+import { useNavigate } from 'react-router';
+
+type Props={
+  currentuser: user;
+}
 
 interface Meal {
     id: string,
@@ -15,7 +21,8 @@ interface Meal {
     kategoria: string
 }
 
-const Cart = () => {
+const Cart: FC<Props> = ({currentuser}) => {
+    const navigoi = useNavigate();
     const [cart, setCart] = useState<Meal[]>([]);
     const [toimitus, setToimitus] = useState<String>();
     const [maksu, setMaksu] = useState<String>();
@@ -184,8 +191,14 @@ const Cart = () => {
                     </Stack>
                 </Stack>
                 <Stack alignItems='flex-end' margin='20px'>
-                    <Button variant='contained' color='secondary' disabled={!toimitus || !maksu}
+                    <Button variant='contained' color='secondary' disabled={!toimitus || !maksu} style={{
+                        display: currentuser.role == 0 ? 'none' : 'block'
+                    }}
                         onClick={() => console.log(cart)}>Tilaa</Button>
+                    <Button variant='contained' color='secondary' style={{
+                        display: currentuser.role == 1 ? 'none' : 'block'
+                    }}
+                        onClick={() => navigoi(`/login`)}>Kirjaudu sisään</Button>
                 </Stack>
             </Stack>
         </Stack>

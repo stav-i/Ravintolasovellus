@@ -58,7 +58,7 @@ const App = () => {
             <Route path='/sivu1' element={<Sivu1 />} />
             <Route path='/menu' element={<Menu />} />
             <Route path='/sivu3' element={<Sivu3 />} />
-            <Route path='/shoppingcart' element={<Cart />} />
+            <Route path='/shoppingcart' element={<Cart currentuser={currentuser} />} />
             <Route path='/login' element={<Login currentuser={currentuser} setuser={setuser}/>} />
             <Route path='/profile' element={<Profile currentuser={currentuser}/>} />
             <Route path='/createprofile' element={<CreateProfile />} />
