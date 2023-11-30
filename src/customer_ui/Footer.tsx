@@ -6,12 +6,25 @@ const Footer: FC = () => {
         <>
         <Stack sx=
         {{ 
-            backgroundColor: "lightblue",
+            backgroundColor: "black",
              border: "4px solid black" ,
-             font: "Roboto"
+             font: "Roboto",
+             color: "white"
+             
         }}
          alignItems="center">
-          <Typography variant="subtitle1" fontSize={"35px"}>©Timpe's Legacy</Typography>
+          <Typography variant="subtitle1" fontSize={"25px"}>YHTEYSTIEDOT
+          <br/>
+
+                                Patteristonkatu 2, 50100 MIKKELI
+                                <br/>
+
+                                ravintolatalli@xamk.fi
+                                <br/>
+
+                                puh. 0153 557 419
+
+ </Typography>
         </Stack>
         
         </>
