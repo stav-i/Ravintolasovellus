@@ -1,11 +1,17 @@
 import { Box, Container, Typography, Button, TextField, colors } from '@mui/material';
 import { Stack } from '@mui/system';
 import { Outlet, useNavigate } from 'react-router-dom';
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { UserData, addData, fetchData, fetchDatafromDatabase } from '../axios';
+import { user } from '../types';
 
+type Props={
+  currentuser: user;
+}
 
-const Profile = () => {
+const Profile: FC<Props>=({currentuser})=>{
+  const [data, setData] = useState<UserData[]>([]);
+  const [mydata, setMyData] = useState<UserData>();
     const navigoi = useNavigate();
    
 
@@ -14,7 +20,7 @@ const Profile = () => {
       };
 
     
-    const [data, setData] = useState<UserData[]>([]);
+    
 
     useEffect(() => {
       const fetchDataFromAPI = async () => {
@@ -29,13 +35,19 @@ const Profile = () => {
       fetchDataFromAPI();
     }, []);
 
+    function loggedincheck(kayttaja: user){
+      if(kayttaja.role==0){
+        return <Typography >Et ole kirjautunut sisään </Typography>;
+      }
+      return <Typography > logged in as: {kayttaja.name}</Typography>;
+    }
     
     return (
 
         <Container>
             <Typography variant="h4">Login</Typography>
             <Box display="flex" sx={{ marginTop: "25px", alignItems: "center", justifyContent: "center"}}>
-                    <Typography >Et ole kirjautunut sisään </Typography>
+                    {loggedincheck(currentuser)}
                     <br></br>
                     <Button sx={{marginLeft: "50px"}} variant='contained' onClick={handleClick}>Kirjaudu sisään</Button>
             </Box>

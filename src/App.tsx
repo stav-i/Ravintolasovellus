@@ -16,8 +16,40 @@ import ManageMeals from './staff_ui/ManageMeals';
 import ManageStaff from './staff_ui/ManageStaff';
 import ManageCustomers from './staff_ui/ManageCustomers';
 import Login from './customer_ui/Login';
+import { user } from './types';
+
+
+const theme = createTheme({
+  palette: {
+    background: {
+      default: "#f7f1f1",
+    },
+  },
+  components: {
+    MuiButton: {
+      styleOverrides:{
+        root: {
+          textTransform: 'lowercase',
+          color: '#000',
+          },
+      },
+    }
+  }
+});
 
 const App = () => {
+
+  const [currentuser,setCurrentuser] = useState<user>({
+    name: "new_user",
+    role: 0
+  });
+  const setuser=(name: string, role: number) =>{
+    setCurrentuser({
+      name: name,
+      role: role
+    });
+  }
+
   return (
       <BrowserRouter>
         <Routes>
@@ -27,8 +59,8 @@ const App = () => {
             <Route path='/menu' element={<Menu />} />
             <Route path='/sivu3' element={<Sivu3 />} />
             <Route path='/shoppingcart' element={<Cart />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/profile' element={<Profile />} />
+            <Route path='/login' element={<Login currentuser={currentuser} setuser={setuser}/>} />
+            <Route path='/profile' element={<Profile currentuser={currentuser}/>} />
             <Route path='/createprofile' element={<CreateProfile />} />
           </Route>
         </Routes>
