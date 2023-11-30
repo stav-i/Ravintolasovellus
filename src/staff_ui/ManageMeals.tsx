@@ -1,46 +1,67 @@
-import { Box, Container, Typography, List, ListItem, Grid } from '@mui/material';
-import { Stack } from '@mui/system';
+import { Box, Container, Typography, List, ListItem, Grid, CssBaseline, Avatar, Button, Divider } from '@mui/material';
+import { Stack, ThemeProvider } from '@mui/system';
 import { Outlet, useNavigate } from 'react-router-dom';
+import StaffTheme from './StaffTheme';
 
 
 const ManageMeals = () => {
     const navigoi = useNavigate();
 
     // mock data
-    const meals = [{"id": 1, "title": "meal1", "img": "img1", "desc": "description"}, {"id": 2, "title": "meal2", "img": "img2", "desc": "description"}, {"id": 3, "title": "meal3", "img": "img3", "desc": "description"}]
+    const meals = [{"id": 1, "title": "Makaronilaatikko", "img": "img1", "desc": "description"}, {"id": 2, "title": "Ananaspizza", "img": "img2", "desc": "description"}, {"id": 3, "title": "Jauhelihakastike", "img": "img3", "desc": "description"}, {"id": 3, "title": "meal3", "img": "img3", "desc": "description"}, {"id": 3, "title": "meal3", "img": "img3", "desc": "description"}, {"id": 3, "title": "meal3", "img": "img3", "desc": "description"}, {"id": 3, "title": "meal3", "img": "img3", "desc": "description"}, {"id": 3, "title": "meal3", "img": "img3", "desc": "description"}, {"id": 3, "title": "meal3", "img": "img3", "desc": "description"}, {"id": 3, "title": "meal3", "img": "img3", "desc": "description"}, {"id": 3, "title": "meal3", "img": "img3", "desc": "description"}, {"id": 3, "title": "meal3", "img": "img3", "desc": "description"}]
 
-    const titlestyle={
-        bgcolor: 'gray'
-    }
 
     var meal_row = meals.map(meal => (
+        <ThemeProvider theme={StaffTheme}>
+        <CssBaseline/>
         <ListItem>
-        <Grid key={meal.id} container>
-            <Grid item xs={4}>
-                <Typography>{meal.img}</Typography>
-            </Grid>
-            <Grid item xs={8} sx={titlestyle}>
-                <Typography>{meal.title}</Typography>
-            </Grid>
-            <Grid item xs={12}>
-                <Typography>{meal.desc}</Typography>
-            </Grid>
-        </Grid>
+            <Grid key={meal.id} container>
+                <Grid container direction={'row'}>
+                    <Grid item xs={2}>
+                        {/* Meal img placeholder */}
+                        <Avatar></Avatar>
+                    </Grid>
+                    <Grid item xs={8}>
+                        <Typography sx={{
+                            fontSize: '0.8rem'
+                        }}>{meal.desc}</Typography>
+                    </Grid>
+                
+                    <Grid item xs={2}>
+                        <Button>
+                            <Typography>Button</Typography>
+                        </Button>
+                    </Grid>
+                </Grid>
+                    
+                <Grid container direction={'row'}>
+                    <Grid item xs={10}>
+                        <Typography variant='h6'>{meal.title}</Typography>
+                    </Grid>
+                    <Grid item xs={2}>
+                        <Button>
+                            <Typography>Button</Typography>
+                        </Button>
+                    </Grid>
+                </Grid>
+                    <Grid item xs={12}>
+                        <Divider></Divider>
+                    </Grid>
+                </Grid>
         </ListItem>
+        </ThemeProvider>
     ))
 
     return (
-        <Grid
-            sx={{
-                bgcolor: 'lightblue'
-            }}>
-            
+        <ThemeProvider theme={StaffTheme}>
+        <CssBaseline/>
+        <Grid>
             <Stack
                 sx={{
                     alignItems: 'center',
                     padding: 2
                 }}>
-                <Typography>Manage meals</Typography>
+                <Typography variant='h4'>Manage meals</Typography>
             </Stack>
 
             <Stack
@@ -52,7 +73,6 @@ const ManageMeals = () => {
                     sx={{
                         width:'100%',
                         maxWidth: 1000,
-                        bgcolor: 'gray',
                         overflow: 'auto',
                         maxHeight: 500
                     }}>
@@ -60,24 +80,9 @@ const ManageMeals = () => {
                 </List>
             </Stack>
         </Grid>
+        </ThemeProvider>
     )
 }
 
-// var row_html=msg.map(item=>{
-//   i++;
-//   return(
-//     <Grid key={i} container>
-//       <Grid item xs={1} sx={rowsx1}>
-//         <img src={imgs[item.senderimg]} height="30"/>
-//       </Grid>
-//       <Grid item xs={2} sx={rowsx2}>
-//         <Typography sx={{fontWeight: "bold"}}>{item.sendername+">"}</Typography>
-//       </Grid>
-//       <Grid item xs={9} sx={rowsx3}>
-//         <Typography>{item.text}</Typography>
-//       </Grid>
-//     </Grid>
-//   );
-// })
 
 export default ManageMeals;

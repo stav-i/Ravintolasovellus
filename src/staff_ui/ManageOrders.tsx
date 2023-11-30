@@ -1,129 +1,102 @@
-import { Box, Container, Typography, Grid, List, ListItem, ListSubheader, CssBaseline } from '@mui/material';
+import { Box, Container, Typography, Grid, List, ListItem, ListSubheader, CssBaseline, Button, Divider, Avatar } from '@mui/material';
 import { Stack, ThemeProvider } from '@mui/system';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { createTheme } from '@mui/material/styles';
+import { DeliveryDining, Restaurant } from '@mui/icons-material';
+import StaffTheme from './StaffTheme';
 
-
-// const theme = createTheme({
-//     palette: {
-//         secondary: {
-//             main: '#d48484'
-//         } 
-//     },
-//     typography: {
-//         h6: {
-//             fontWeight: 700,
-//             fontSize: "1.1rem",
-//             margin: '10px'
-//         },
-//         h5: {
-//             fontSize: "1.1rem",
-//             lineHeight: '2.2rem',
-//             textAlign: 'right',
-//             letterSpacing: 0.7,
-//             marginRight: '15px',
-//             width: '50%'
-//         },
-//         body2: {
-//             fontWeight: 600,
-//             lineHeight: '2.2rem',
-//             fontSize: '1.2rem'
-//         }
-//     }, 
-//     components: {
-//         MuiButton: {
-//           styleOverrides:{
-//             root: {
-//               textTransform: 'lowercase',
-//               color: '#000',
-//               },
-//           },
-//         }
-//       }
-//   });
-
-const theme = createTheme({
-    palette: {
-        mode: 'dark',
-        primary: {
-          main: '#3f51b5',
-        },
-        secondary: {
-          main: '#f50057',
-        }, 
-      },
-      typography: {
-                h6: {
-                    fontWeight: 700,
-                    fontSize: "1.1rem",
-                    margin: '10px'
-                },
-                h5: {
-                    fontSize: "1.1rem",
-                    lineHeight: '2.2rem',
-                    textAlign: 'right',
-                    letterSpacing: 0.7,
-                    marginRight: '15px',
-                    width: '50%'
-                },
-                body2: {
-                    fontWeight: 600,
-                    lineHeight: '2.2rem',
-                    fontSize: '1.2rem'
-                }
-            }, 
-})
 
 const ManageOrders = () => {
     const navigoi = useNavigate();
 
     //mock data
-    const activeOrders = [{"id": 1, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 2, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}]
+    const activeOrders = [{"id": 1, "ordername": "ordername", "orderinfo": "orderinfo orderinfo orderinfo orderinfo orderinfo orderinfo orderinfo orderinfo orderinfo orderinfo"}, {"id": 2, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}]
 
     const incomingOrders = [{"id": 1, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 2, "ordername": "ordername", "orderinfo": "orderinfo"}, {"id": 3, "ordername": "ordername", "orderinfo": "orderinfo"}]
 
     var activeOrders_row = activeOrders.map(order => (
+        <ThemeProvider theme={StaffTheme}>
+        <CssBaseline/>
         <ListItem>
             <Grid key={order.id} container>
-                <Grid item xs={4}>
-                    <Typography>{order.ordername}</Typography>
+                <Grid item xs={2}>
+                    {/* Meal img placeholder */}
+                    <Avatar></Avatar>
                 </Grid>
                 <Grid item xs={8}>
+                    <Typography variant='h6'>{order.ordername}</Typography>
+                </Grid>
+                <Grid item xs={2}>
+                    <Button>
+                        <Typography>Button</Typography>
+                    </Button>
+                </Grid>
+                <Grid item xs={10}>
                     <Typography>{order.orderinfo}</Typography>
+                </Grid>
+                <Grid item xs={2}>
+                    <Button>
+                        <Typography>Button</Typography>
+                    </Button>
+                </Grid>
+                <Grid item xs={12}>
+                    <Divider></Divider>
                 </Grid>
             </Grid>
         </ListItem>
+        </ThemeProvider>
     ))
 
     var incomingOrders_row = incomingOrders.map(order => (
+        <ThemeProvider theme={StaffTheme}>
+        <CssBaseline/>
         <ListItem>
             <Grid key={order.id} container>
-                <Grid item xs={4}>
-                    <Typography>{order.ordername}</Typography>
+                <Grid item xs={2}>
+                    {/* Meal img placeholder */}
+                    <Avatar></Avatar>
                 </Grid>
                 <Grid item xs={8}>
+                    <Typography variant='h6'>{order.ordername}</Typography>
+                </Grid>
+                <Grid item xs={2}>
+                    <Button>
+                        <Typography>Button</Typography>
+                    </Button>
+                </Grid>
+                <Grid item xs={10}>
                     <Typography>{order.orderinfo}</Typography>
+                </Grid>
+                <Grid item xs={2}>
+                    <Button>
+                        <Typography>Button</Typography>
+                    </Button>
+                </Grid>
+                <Grid item xs={12}>
+                    <Divider></Divider>
                 </Grid>
             </Grid>
         </ListItem>
+        </ThemeProvider>
     ))
 
     return (
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={StaffTheme}>
+        <CssBaseline/>
         <Grid sx={{
-            backgroundColor: 'gray'
+
         }}>
             <Stack
                 sx={{
                     alignItems: 'center',
                     padding: 2
                 }}>
-            <Typography>Manage orders</Typography>
+            <Typography variant='h4'>Manage orders</Typography>
             </Stack>
 
             <Stack
                 sx={{
-                    alignItems: 'center',
+                    alignItems: 'flex-start',
                     padding: 5
                 }}
                 direction={'row'}
@@ -134,14 +107,21 @@ const ManageOrders = () => {
                         width:'100%',
                         maxWidth: 600,
                         overflow: 'auto',
-                        maxHeight: 300
+                        maxHeight: 500
                     }}
                     subheader={
                         <ListSubheader>
-                            <Typography variant='h5'>Active orders</Typography>
+                            <Grid container>
+                                <Grid item xs={2}>
+                                    <DeliveryDining/>
+                                </Grid>
+                                <Grid item xs={10}>
+                                    <Typography variant='h5'>Active orders</Typography>
+                                </Grid>
+                            </Grid>
                         </ListSubheader>}>
 
-                        <Typography variant='h6'>{activeOrders_row}</Typography>
+                        <Typography>{activeOrders_row}</Typography>
                 </List>
 
                 <List
@@ -149,14 +129,21 @@ const ManageOrders = () => {
                         width:'100%',
                         maxWidth: 600,
                         overflow: 'auto',
-                        maxHeight: 300
+                        maxHeight: 500
                     }}
                     subheader={
                         <ListSubheader>
-                            <Typography variant='h5'>Incoming orders</Typography>
+                            <Grid container>
+                                <Grid item xs={2}>
+                                    <Restaurant/>
+                                </Grid>
+                                <Grid item xs={10}>
+                                    <Typography variant='h5'>Incoming orders</Typography>
+                                </Grid>
+                            </Grid>
                         </ListSubheader>}>
 
-                        <Typography variant='h6'>{incomingOrders_row}</Typography>
+                        <Typography>{incomingOrders_row}</Typography>
                 </List>
             </Stack>
             
