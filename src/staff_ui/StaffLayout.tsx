@@ -3,7 +3,6 @@ import { Stack } from '@mui/system';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 
 const pages = ["ManageOrders", "ManageMeals", "ManageStaff", "ManageCustomers"]
@@ -24,7 +23,7 @@ const StaffLayout = () => {
     return (
         <Container maxWidth='lg' disableGutters>
             <AppBar position='static' sx={{
-                bgcolor: 'lightblue',
+                bgcolor: '#33a7cc',
                 boxShadow: 'none'
             }}>
                 <Toolbar disableGutters>
@@ -82,9 +81,6 @@ const StaffLayout = () => {
                     </Box>
                     
                     <Box sx={{ flexGrow: 0 }}>
-                        <IconButton onClick={() => navigoi('/shoppingcart')}>
-                            <ShoppingCartIcon />
-                        </IconButton>
                         <IconButton onClick={() => navigoi('/profile')}>
                             <AccountBoxIcon />
                         </IconButton>
