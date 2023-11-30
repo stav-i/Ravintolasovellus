@@ -39,6 +39,16 @@ const theme = createTheme({
 
 const App = () => {
 
+  const [currentuser,setCurrentuser] = useState<user>({
+    name: "new_user",
+    role: 0
+  });
+  const setuser=(name: string, role: number) =>{
+    setCurrentuser({
+      name: name,
+      role: role
+    });
+  }
 
   return (
       <BrowserRouter>
