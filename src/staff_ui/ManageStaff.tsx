@@ -162,7 +162,7 @@ const ManageStaff = () => {
                     </Grid>
                     <Grid item xs={2}>
                         <Button>
-                            <Typography>Button</Typography>
+                            <Typography>Edit</Typography>
                         </Button>
                     </Grid>
                 </Grid>
@@ -175,9 +175,9 @@ const ManageStaff = () => {
                         <Typography>Työtehtävä: {staffmember.Tyotehtava} Palkka: {staffmember.Palkka} €</Typography>
                     </Grid>
                     <Grid item xs={2}>
-                        <Button>
-                            <Typography>Button</Typography>
-                        </Button>
+                      <Button onClick={() => handleDeleteEmployee(staffmember.id)}>
+                        <Typography>Delete</Typography>
+                      </Button>
                     </Grid>
                     <Grid item xs={12}>
                         <Divider></Divider>
