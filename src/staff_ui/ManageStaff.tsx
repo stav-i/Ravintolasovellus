@@ -217,9 +217,15 @@ const ManageStaff = () => {
                 </List>
             </Stack>
         </Grid>
+        
 
-        <Typography>
-      <h1>Henkilökunta</h1>
+      <Grid>
+        <Stack
+          sx={{
+            alignItems: 'center'
+          }}>
+      <Typography>
+      <Typography variant='h4'>Henkilökunta</Typography>
 
       <Button variant='contained' onClick={toggleForm}>
         {showForm?'Piilota lomake' : 'Lisää työntekijä'}
@@ -389,7 +395,8 @@ const ManageStaff = () => {
         </table>
       </div>
     </Typography>
-
+    </Stack>
+    </Grid>
 
 
 
