@@ -1,9 +1,10 @@
 import { AppBar, Badge, Box, Button, Container, CssBaseline, IconButton, Menu, MenuItem, ThemeProvider, Toolbar, Typography, createTheme } from '@mui/material';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, FC } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import { user } from '../types';
 
 interface Meal {
     id: string,
@@ -13,7 +14,7 @@ interface Meal {
     kategoria: string
 }
 
-const pages = ["Sivu1", "Menu", "Sivu3"]
+const pages = ["Sivu1", "Menu",]
 
 declare module '@mui/material/styles' {
     interface TypographyVariants {
@@ -34,7 +35,35 @@ declare module '@mui/material/styles' {
     }
   }
 
-const Layout = () => {
+  type Props={
+    currentuser: user;
+  }
+  const Layout: FC<Props>=({currentuser})=>{
+
+    var loginstring="";
+    if (currentuser.role!=0){
+        loginstring="logged in as: "+currentuser.name;
+    }
+
+    function loggedincheck(kayttaja: user){
+    if(kayttaja.role!=2){//nappi piilossa jos et ole kirjautunut.
+        return "";
+    }
+    return(
+    <Button 
+        variant="contained"
+        color="primary"
+        onClick={() => navigoi('/manageorders')}
+        sx={{
+            textTransform: "none",
+            maxWidth: "150px",
+            marginLeft: "10px",
+            //backgroundColor: "#ffa07a",
+        }}
+        >
+        Staff Pages
+    </Button>)
+    }
 
     const theme = createTheme({
         palette: {
@@ -175,7 +204,8 @@ const Layout = () => {
                                 </Button>
                             )))}
                         </Box>
-
+                        <Typography>{loginstring}</Typography>
+                        {loggedincheck(currentuser)}
                         <Box sx={{ flexGrow: 0 }}>
                             <IconButton onClick={() => navigoi('/shoppingcart')}>
                                 <Badge badgeContent={cart.length} color='error'>
