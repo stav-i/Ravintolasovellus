@@ -88,4 +88,6 @@ export interface UserData {
   username: string;
   password: string;
   repassword: string;
+  admin?: string;
+  henkilostoid?: string;
 }

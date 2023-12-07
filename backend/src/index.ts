@@ -84,24 +84,14 @@ app.get("/api", (req, res) => {
   });
 
 
-app.post("/login", async (req, res) => {
-  console.log("login request:");
-  try{
-    console.log(req.body);
-    var responsedata="login: "+req.body.name+","+req.body.pw;
-    return res.status(200).json(responsedata);
-  }catch(error:any){
-    console.log("error");
-    return res.status(418).json({error:"something did not work"});
-  }
-});
+
 
 const kirjautuminen = new sqlite3.Database("kirjautuminen.db");
 
 kirjautuminen.serialize(() => {
   kirjautuminen.run(
-    'CREATE TABLE IF NOT EXISTS Users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT)'
-  );
+    'CREATE TABLE IF NOT EXISTS Users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT, admin BIT , henkilostoid INTEGER DEFAULT -1)'
+    );
 });
 
 app.post("/api/register", async (req: Request, res: Response) => {
@@ -132,6 +122,7 @@ interface LoginData {
   id: number;
   username: string;
   password: string;
+  admin: string;
 }
 
 app.post("/api/login", async (req: Request, res: Response) => {
@@ -143,8 +134,9 @@ app.post("/api/login", async (req: Request, res: Response) => {
     kirjautuminen.all("SELECT * FROM Users WHERE username = ? AND password = ?", [username, password], (err, rows: LoginData[]) => {
       if (!err && rows.length > 0) {
         const loggedInUser = rows[0].username;
+        const isadmin=rows[0].admin;
         console.log("User logged in:", loggedInUser);
-        return res.status(200).json({ message: "Login successful", username: loggedInUser });
+        return res.status(200).json({ message: "Login successful", username: loggedInUser ,admin: isadmin});
       } else {
         return res.status(401).json({ error: "Invalid username or password" });
       }
