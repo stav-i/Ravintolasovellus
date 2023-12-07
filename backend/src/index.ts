@@ -1,5 +1,3 @@
-console.log("wadap boyz");
-
 import express, { Express, Request, Response} from "express";
 import sqlite3 from "sqlite3";
 import cors from "cors";
@@ -10,23 +8,19 @@ const PORT = 3001;
 
 const app = express();
 
+app.use(cors());
+
 app.use(bodyParser.json());
 
-app.use("/menu", menuReitit);
+app.listen(PORT, () => {
+  console.log(`Server listening on ${PORT}`);
+});
 
 const henkilosto = new sqlite3.Database('henkilosto.db');
 
 henkilosto.serialize(() => {
   henkilosto.run('CREATE TABLE IF NOT EXISTS Henkilosto (id INTEGER PRIMARY KEY AUTOINCREMENT, Etunimi TEXT, Sukunimi TEXT, Salasana TEXT,Puhelin INTEGER, Sahkoposti TEXT, Tyotehtava TEXT, Palkka FLOAT)');
 });
-
-const kayttajat = new sqlite3.Database('kayttajat.db');
-
-kayttajat.serialize(() => {
-  kayttajat.run('CREATE TABLE IF NOT EXISTS Kayttajat (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL, password TEXT NOT NULL)');
-});
-
-app.use(cors());
 
 app.get("/api", (req, res) => {
     res.json({ message: "Hello from SAKKE!" });
@@ -87,6 +81,7 @@ app.get("/api", (req, res) => {
     });
   });
 
+
 app.post("/login", async (req, res) => {
   console.log("login request:");
   try{
@@ -99,15 +94,6 @@ app.post("/login", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}`);
-});
-
-
-
-//Tomin testaus kirjautumis databasen ja kirjautumisen tekemiseen
-
-const PORT2 = 3002;
 const kirjautuminen = new sqlite3.Database("kirjautuminen.db");
 
 kirjautuminen.serialize(() => {
@@ -115,9 +101,6 @@ kirjautuminen.serialize(() => {
     'CREATE TABLE IF NOT EXISTS Users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT)'
   );
 });
-
-app.use(cors());
-app.use(express.json()); // Add this line to parse JSON requests
 
 app.post("/api/register", async (req: Request, res: Response) => {
   try {
@@ -143,7 +126,6 @@ app.post("/api/register", async (req: Request, res: Response) => {
   }
 });
 
-//tomin login testi
 interface LoginData {
   id: number;
   username: string;
@@ -180,6 +162,3 @@ app.get("/api/getuserdata", async (req: Request, res: Response) => {
   });
 });
 
-app.listen(PORT2, () => {
-  console.log(`Create account server is running on http://localhost:${PORT2} :O`);
-});

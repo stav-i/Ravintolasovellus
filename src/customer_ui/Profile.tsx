@@ -69,8 +69,6 @@ const Profile: FC<Props>=({currentuser})=>{
                                 <td>{item.username}</td>
                                 <td>{item.password}</td>
                                 <td>{item.repassword}</td>
-                                <td><button>Edit</button></td>
-                                <td><button>Delete</button></td>
                             </tr>
                             ))}
                         </tbody>
