@@ -6,7 +6,6 @@ import StaffTheme from './StaffTheme';
 const ManageStaff = () => {
     const navigoi = useNavigate();
 
-    // mock data
     const staff = [{"id": 1, "name": "name", "info": "info"}, {"id": 2, "name": "name", "info": "info"}, {"id": 3, "name": "name", "info": "info"}, {"id": 3, "name": "name", "info": "info"}, {"id": 3, "name": "name", "info": "info"}, {"id": 3, "name": "name", "info": "info"}, {"id": 3, "name": "name", "info": "info"}, {"id": 3, "name": "name", "info": "info"}, {"id": 3, "name": "name", "info": "info"}, {"id": 3, "name": "name", "info": "info"}, {"id": 3, "name": "name", "info": "info"}, {"id": 3, "name": "name", "info": "info"}]
 
     var staff_row = staff.map(staffmember => (
