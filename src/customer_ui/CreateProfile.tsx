@@ -1,28 +1,42 @@
 import { Box, Container, Typography, Button, TextField, colors } from '@mui/material';
-import { Stack } from '@mui/system';
-import { Outlet, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import React, { useState } from "react";
-import { light } from '@mui/material/styles/createPalette';
-import { url } from 'inspector';
+import { UserData, fetchData2 } from '../axios';
 
-
-const Profile = () => {
+  const Profile = () => {
     const navigoi = useNavigate();
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [repassword, setRePassword] = useState("");
-
-    const handleLogin = () => {
-        if (password == repassword){
-            navigoi("/");
+    const [username, setUsername] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const [repassword, setRePassword] = useState<string>("");
+  
+    const createProfile = async () => {
+      try {
+        
+        if (!username || !password || !repassword) {
+          throw new Error('Username, password, and re-entered password cannot be empty');
+        } else if (password !== repassword) {
+          throw new Error('Passwords do not match');
         }
-        else{
-            alert("Passwords do not match");
+    
+        // If validation passes, create the userData object
+        const userData: UserData = { username, password, repassword };
+    
+        // Now check if the fields are non-empty before making the API call
+        if (userData.username && userData.password && userData.repassword) {
+          const response = await fetchData2(userData);
+    
+          if (response.status === 201) {
+            alert('User registered successfully');
+            navigoi('/profile'); // Navigate only if registration is successful
+          }
+        } else {
+          throw new Error('Invalid input data');
         }
-        // Here, you can add your login logic.
-        // For simplicity, we'll just check if the username and password are not empty.
-       
-      };
+      } catch (error: any) {
+        console.error('Error:', error.message);
+        alert(error.message);
+      }
+    };
     
     return (
         <Container>
@@ -67,17 +81,17 @@ const Profile = () => {
                         />
                         <br />
                         <br />
-                        <Button 
+                        <Button
                             variant="contained"
                             color="primary"
-                            onClick={handleLogin}
+                            onClick={createProfile}
                             fullWidth
                             sx={{
-                                textTransform: "none",
-                                backgroundColor: "#ffa07a",
+                            textTransform: "none",
+                            backgroundColor: "#ffa07a",
                             }}
-                            >
-                            Create
+                        >
+                         Create
                         </Button>
                         <br />
                         <br />

@@ -1,73 +1,80 @@
 import { Box, Container, Typography, Button, TextField, colors } from '@mui/material';
 import { Stack } from '@mui/system';
 import { Outlet, useNavigate } from 'react-router-dom';
-import React, { useState } from "react";
-import { light } from '@mui/material/styles/createPalette';
-import { url } from 'inspector';
+import React, { FC, useEffect, useState } from "react";
+import { UserData, addData, fetchData, fetchDatafromDatabase } from '../axios';
+import { user } from '../types';
 
+type Props={
+  currentuser: user;
+}
 
-const Profile = () => {
+const Profile: FC<Props>=({currentuser})=>{
+  const [data, setData] = useState<UserData[]>([]);
+  const [mydata, setMyData] = useState<UserData>();
     const navigoi = useNavigate();
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+   
 
-    const handleLogin = () => {
-        // Here, you can add your login logic.
-        // For simplicity, we'll just check if the username and password are not empty.
-        if (username && password) {
-          // Redirect to another page after successful login
-          navigoi("/");
+    const handleClick = () => {
+        navigoi("/login");
+      };
+
+    
+    
+
+    useEffect(() => {
+      const fetchDataFromAPI = async () => {
+        try {
+          const apiData = await fetchDatafromDatabase(); 
+          setData(apiData);
+        } catch (error) {
+          console.error('Error fetching data:', error);
         }
       };
+  
+      fetchDataFromAPI();
+    }, []);
+
+    function loggedincheck(kayttaja: user){
+      if(kayttaja.role==0){
+        return <Typography >Et ole kirjautunut sisään </Typography>;
+      }
+      return <Typography > logged in as: {kayttaja.name}</Typography>;
+    }
     
     return (
+
         <Container>
             <Typography variant="h4">Login</Typography>
             <Box display="flex" sx={{ marginTop: "25px", alignItems: "center", justifyContent: "center"}}>
-                    <form style = {{
-                        border: "3px solid #000",
-                        padding: "16px",
-                        backgroundImage: `url(${'https://png.pngtree.com/thumb_back/fh260/background/20200804/pngtree-bright-color-gradient-gradation-change-background-image_377133.jpg'})`,
-                        borderRadius: "5px",
-                        height: "500px",
-                        backgroundRepeat: 'no-repeat',
-                        backgroundSize: 'cover'
-                        }}>
-                         <TextField sx={{backgroundColor: "white"}}
-                            label="Username"
-                            fullWidth
-                            variant="outlined"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            margin="normal"
-                        />
-                        <TextField sx={{backgroundColor: "white"}}
-                            label="Password"
-                            fullWidth
-                            variant="outlined"
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            margin="normal"
-                        />
-                        <br />
-                        <br />
-                        <Button 
-                            variant="contained"
-                            color="primary"
-                            onClick={handleLogin}
-                            fullWidth
-                            sx={{
-                                textTransform: "none",
-                                backgroundColor: "#ffa07a",
-                            }}
-                            >
-                            Login
-                        </Button>
-                        <br />
-                        <br />
-                        <Typography onClick={() => navigoi("/createprofile")} textAlign={'center'}>Not a member? <a href="#">Sign up!</a></Typography>
-                    </form>
+                    {loggedincheck(currentuser)}
+                    <br></br>
+                    <Button sx={{marginLeft: "50px"}} variant='contained' onClick={handleClick}>Kirjaudu sisään</Button>
+            </Box>
+            <Box>
+                <Typography>
+                    <h1>Käyttäjätiedot ja salasanat </h1>
+                    <button onClick={addData}>Add new</button>
+                    <div className="data-grid">
+                        <table>
+                        <thead>
+                            <tr>
+                            <th>Username</th>
+                            <th>Password</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {data.map(item => (
+                            <tr key={item.username}>
+                                <td>{item.username}</td>
+                                <td>{item.password}</td>
+                                <td>{item.repassword}</td>
+                            </tr>
+                            ))}
+                        </tbody>
+                        </table>
+                    </div>
+                </Typography>
             </Box>
         </Container>
     );
