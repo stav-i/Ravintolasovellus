@@ -27,6 +27,7 @@ const Profile: FC<Props>=({currentuser})=>{
         try {
           const apiData = await fetchDatafromDatabase(); 
           setData(apiData);
+          //console.log(apiData);
         } catch (error) {
           console.error('Error fetching data:', error);
         }
@@ -54,13 +55,14 @@ const Profile: FC<Props>=({currentuser})=>{
             <Box>
                 <Typography>
                     <h1>Käyttäjätiedot ja salasanat </h1>
-                    <button onClick={addData}>Add new</button>
                     <div className="data-grid">
                         <table>
                         <thead>
                             <tr>
                             <th>Username</th>
                             <th>Password</th>
+                            <th>Admin</th>
+                            <th>Henkilostoid</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -68,7 +70,8 @@ const Profile: FC<Props>=({currentuser})=>{
                             <tr key={item.username}>
                                 <td>{item.username}</td>
                                 <td>{item.password}</td>
-                                <td>{item.repassword}</td>
+                                <td>{(item.admin === null)?"no":"yes"}</td>
+                                <td>{item.henkilostoid}</td>
                             </tr>
                             ))}
                         </tbody>

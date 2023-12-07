@@ -2,12 +2,36 @@ import { Box, Container, Typography, Grid, List, ListItem, CssBaseline, Avatar, 
 import { Stack, ThemeProvider } from '@mui/system';
 import { Outlet, useNavigate } from 'react-router-dom';
 import StaffTheme from './StaffTheme';
+import React, { useState, useEffect } from 'react';
+import { fetchData, addData, deleteData, editData } from '../axios';
+
+export interface DataItem {
+    id: number;
+    username: string;
+  }
+
+
 
 const ManageCustomers = () => {
     const navigoi = useNavigate();
 
-    // mock data
-    const customers = [{"id": 1, "name": "name", "info": "info"}, {"id": 2, "name": "name", "info": "info"}, {"id": 3, "name": "name", "info": "info"}, {"id": 3, "name": "name", "info": "info"}, {"id": 3, "name": "name", "info": "info"}, {"id": 3, "name": "name", "info": "info"}, {"id": 3, "name": "name", "info": "info"}, {"id": 3, "name": "name", "info": "info"}, {"id": 3, "name": "name", "info": "info"}, {"id": 3, "name": "name", "info": "info"}, {"id": 3, "name": "name", "info": "info"}, {"id": 3, "name": "name", "info": "info"}, {"id": 3, "name": "name", "info": "info"}]
+    
+    const [customers, setCustomers] = useState<DataItem[]>([]);
+
+    useEffect(() => {
+        haeAsiakas();
+    }, []);
+
+    const haeAsiakas = async () => {
+        try {
+            const response = await fetch("/api/getuserdata");
+            const data = await response.json();
+            setCustomers(data);
+        } catch (error: any) {
+            console.error(error);
+        }
+    }
+
 
     var customer_row = customers.map(customer => (
         <ThemeProvider theme={StaffTheme}>
@@ -19,22 +43,22 @@ const ManageCustomers = () => {
                         <Avatar></Avatar>
                     </Grid>
                     <Grid item xs={8}>
-                        <Typography>{customer.info}</Typography>
+                        <Typography> </Typography>
                     </Grid>
                     <Grid item xs={2}>
                         <Button>
-                            <Typography>Button</Typography>
+                            <Typography>Edit</Typography>
                         </Button>
                     </Grid>
                 </Grid>
 
                 <Grid container direction={'row'}>
                     <Grid item xs={10}>
-                        <Typography variant='h6'>{customer.name}</Typography>
+                        <Typography variant='h6'>{customer.username}</Typography>
                     </Grid>
                     <Grid item xs={2}>
                         <Button>
-                            <Typography>Button</Typography>
+                            <Typography>Delete</Typography>
                         </Button>
                     </Grid>
                     <Grid item xs={12}>
@@ -76,6 +100,11 @@ const ManageCustomers = () => {
             </Stack>
             
         </Grid>
+
+
+
+
+
         </ThemeProvider>
     )
 }
