@@ -285,7 +285,7 @@ const ManageStaff = () => {
       )}
 
       <div className="data-grid">
-        <table>
+        {/* <table>
           <thead>
             <tr>
               <th>ID</th>
@@ -392,7 +392,7 @@ const ManageStaff = () => {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table> */}
       </div>
     </Typography>
     </Stack>
