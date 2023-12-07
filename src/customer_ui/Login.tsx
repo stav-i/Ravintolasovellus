@@ -33,7 +33,10 @@ const Login: FC<Props>=({currentuser,setuser})=>{
       
             if (response.status === 200) {
               //console.log("login successful");
-              setuser(response.data.username,1);
+              var rooli=1;
+              //console.log(response.data);
+              if(response.data.admin==1){rooli=2;}
+              setuser(response.data.username,rooli);
               navigoi('/profile'); // Navigate only if registration is successful
             }
           } else {

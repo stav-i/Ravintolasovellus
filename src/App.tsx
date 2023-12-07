@@ -53,7 +53,7 @@ const App = () => {
   return (
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Layout />}>
+          <Route path='/' element={<Layout currentuser={currentuser}/>}>
             <Route index element={<Etusivu />} />
             <Route path='/sivu1' element={<Sivu1 />} />
             <Route path='/menu' element={<Menu />} />
