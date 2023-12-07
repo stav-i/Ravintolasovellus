@@ -41,7 +41,7 @@ export const deleteData = async (id:any) => {
 //Tomin testi
 export const fetchData2 = async (userData: UserData) => {
   try {
-    const response = await axios.post("http://localhost:3002/api/register", userData);
+    const response = await axios.post("http://localhost:3001/api/register", userData);
     return response;
   } catch (error) {
     return Promise.reject(error); // Return a rejected Promise
@@ -50,7 +50,7 @@ export const fetchData2 = async (userData: UserData) => {
 //Tomin paras testi (login)
 export const fetchData3 = async (userData: UserData) => {
   try {
-    const response = await axios.post("http://localhost:3002/api/login", userData);
+    const response = await axios.post("http://localhost:3001/api/login", userData);
     return response;
   } catch (error) {
     return Promise.reject(error); // Return a rejected Promise
@@ -60,7 +60,7 @@ export const fetchData3 = async (userData: UserData) => {
 export const addData2 = async (userData: UserData) => {
   try {
     const response = await axios.post(
-      "http://localhost:3002/api/register",
+      "http://localhost:3001/api/register",
       userData,
       {
         headers: {
@@ -77,7 +77,7 @@ export const addData2 = async (userData: UserData) => {
 
 export const fetchDatafromDatabase = async () => {
   try {
-    const response = await axios.get('http://localhost:3002/api/getuserdata');
+    const response = await axios.get('http://localhost:3001/api/getuserdata');
     return response.data;
   } catch (error) {
     throw error;
