@@ -4,12 +4,15 @@ import express, { Express, Request, Response} from "express";
 import sqlite3 from "sqlite3";
 import cors from "cors";
 import bodyParser from "body-parser";
+import { reititin as menuReitit } from '../reitit/menu';
 
 const PORT = 3001;
 
 const app = express();
 
 app.use(bodyParser.json());
+
+app.use("/menu", menuReitit);
 
 const henkilosto = new sqlite3.Database('henkilosto.db');
 

@@ -1,5 +1,4 @@
 import { Typography, Stack, Divider, Grid, IconButton } from '@mui/material';
-import data from './menu.json';
 import { useEffect, useState } from 'react';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
@@ -18,9 +17,19 @@ const Menu = () => {
     const [cart, setCart] = useState<Meal[]>([]);
 
     useEffect(() => {
-        setMenu(data);
+        haeMenu();
         setCart(JSON.parse(localStorage.getItem('cart') || "[]"));
     }, []);
+
+    const haeMenu = async () => {
+        try {
+            const response = await fetch("/menu");
+            const data = await response.json();
+            setMenu(data);
+        } catch (error: any) {
+            console.error(error);
+        }
+    }
 
     return (
         <>
