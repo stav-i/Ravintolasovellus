@@ -1,4 +1,4 @@
-import { Typography, List, ListItem, Grid, CssBaseline, Avatar, Button, Divider } from '@mui/material';
+import { Typography, List, ListItem, Grid, CssBaseline, Avatar, Button, Divider, TextField } from '@mui/material';
 import { Stack, ThemeProvider } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
 import StaffTheme from './StaffTheme';
@@ -16,6 +16,10 @@ const ManageMeals = () => {
     const navigoi = useNavigate();
 
     const [menu, setMenu] = useState<Meal[]>([]);
+    const [nimi, setNimi] = useState<String>("");
+    const [info, setInfo] = useState<String>("");
+    const [hinta, setHinta] = useState<number>(0);
+    const [kategoria, setKategoria] = useState<String>("");
 
     useEffect(() => {
         haeMenu();
@@ -42,6 +46,25 @@ const ManageMeals = () => {
         haeMenu();
     }
 
+    const handleUusi = async () => {
+        if (!nimi || !info || !hinta || !kategoria) {
+            return;
+        }
+
+        try {
+            await fetch("/menu", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ nimi: nimi, info: info, hinta: hinta, kategoria: kategoria })
+            });
+            haeMenu();
+        } catch (error: any) {
+            console.log("Error adding new meal")
+        }
+    }
+
     var meal_row = menu.map(meal => (
         <ThemeProvider theme={StaffTheme}>
         <CssBaseline/>
@@ -60,7 +83,7 @@ const ManageMeals = () => {
                 
                     <Grid item xs={2}>
                         <Button>
-                            <Typography>Button</Typography>
+                            <Typography>edit</Typography>
                         </Button>
                     </Grid>
                 </Grid>
@@ -94,6 +117,20 @@ const ManageMeals = () => {
                 }}>
                 <Typography variant='h4'>Manage meals</Typography>
             </Stack>
+        
+            <Stack>
+                <Typography variant='subtitle1'>Ruoan nimi</Typography>
+                <TextField variant="standard" onChange={(event) => setNimi(event.target.value)}/>
+                <Typography variant='subtitle1'>Kuvaus</Typography>
+                <TextField variant="standard" onChange={(event) => setInfo(event.target.value)}/>
+                <Typography variant='subtitle1'>Hinta</Typography>
+                <TextField variant="standard" type="number" onChange={(event) => setHinta(Number(event.target.value))}/>
+                <Typography variant='subtitle1'>Kategoria</Typography>
+                <TextField variant="standard" onChange={(event) => setKategoria(event.target.value)}/>
+            </Stack>
+            <Button onClick={() => handleUusi()}>
+                Lisää uusi ruoka
+            </Button>
 
             <Stack
                 sx={{
