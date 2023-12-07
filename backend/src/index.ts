@@ -16,6 +16,8 @@ app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
 
+app.use("/menu", menuReitit);
+
 const henkilosto = new sqlite3.Database('henkilosto.db');
 
 henkilosto.serialize(() => {
